@@ -36,8 +36,8 @@ export const Footer = () => {
         navigate('/contact') 
     }; 
     // const emailClick = () => { navigate('/') }; 
-    // const githubClick = () => { navigate('/work') }; 
-
+    
+    const githubClick = () => { window.open('https://github.com/SithulaGamage', '_blank') }; 
     const linkedinClick = () => { window.open('https://www.linkedin.com/in/sithulagamage', '_blank') }; 
     const facebookClick = () => { window.open('https://www.facebook.com/profile.php?id=61558540310010', '_blank') }; 
 
@@ -55,7 +55,7 @@ export const Footer = () => {
 
                 <div className='footer-quick-link-icons-container'>
                     {/* <EmailIcon onClick={emailClick} className='footer-email-icon'/> */}
-                    {/* <GitHubIcon onClick={githubClick} className='footer-github-icon'/> */}
+                    <GitHubIcon onClick={githubClick} className='footer-github-icon'/>
                     <LinkedInIcon onClick={linkedinClick} className='footer-linkedin-icon'/>
                     <FacebookIcon onClick={facebookClick} className='footer-facebook-icon'/>
                 </div>
