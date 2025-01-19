@@ -289,27 +289,27 @@ export const Navbar = () => {
     // =========================================================================
     // ========================== LOGO COLOUR CHANGER ==========================
     // =========================================================================
-    const root = document.documentElement;
-    // Define the primary color
-    const primaryColor = root.style.getPropertyValue('--highlight');
+    // const root = document.documentElement;
+    // // Define the primary color
+    // const primaryColor = root.style.getPropertyValue('--highlight');
 
-    // Helper function to adjust color brightness
-    function adjustColor(color, redOffset, greenOffset, blueOffset) {
-        const [r, g, b] = color.match(/\w\w/g).map((hex) => parseInt(hex, 16));
-        const newR = Math.min(255, Math.max(0, r + redOffset));
-        const newG = Math.min(255, Math.max(0, g + greenOffset));
-        const newB = Math.min(255, Math.max(0, b + blueOffset));
-        return `rgb(${newR}, ${newG}, ${newB})`;
-    }
+    // // Helper function to adjust color brightness
+    // function adjustColor(color, redOffset, greenOffset, blueOffset) {
+    //     const [r, g, b] = color.match(/\w\w/g).map((hex) => parseInt(hex, 16));
+    //     const newR = Math.min(255, Math.max(0, r + redOffset));
+    //     const newG = Math.min(255, Math.max(0, g + greenOffset));
+    //     const newB = Math.min(255, Math.max(0, b + blueOffset));
+    //     return `rgb(${newR}, ${newG}, ${newB})`;
+    // }
 
-    // Calculate the secondary and tertiary colors
-    const secondaryColor = adjustColor(primaryColor, -25, -39, -58);
-    const tertiaryColor = adjustColor(primaryColor, +31, +32, +34);
+    // // Calculate the secondary and tertiary colors
+    // const secondaryColor = adjustColor(primaryColor, -25, -39, -58);
+    // const tertiaryColor = adjustColor(primaryColor, +31, +32, +34);
 
-    // Set CSS variables
-    root.style.setProperty('--color-primary', primaryColor);
-    root.style.setProperty('--color-secondary', secondaryColor);
-    root.style.setProperty('--color-tertiary', tertiaryColor);
+    // // Set CSS variables
+    // root.style.setProperty('--color-primary', primaryColor);
+    // root.style.setProperty('--color-secondary', secondaryColor);
+    // root.style.setProperty('--color-tertiary', tertiaryColor);
 
     return (
         <div className='header'>
