@@ -48,7 +48,7 @@ export const Footer = () => {
                 <div className='footer-links-container'>
                     <div onClick={homeClick} className='footer-link'>Home</div>
                     <div onClick={workClick} className='footer-link'>Work</div>
-                    <div onClick={writingClick} className='footer-link'>Writing</div>
+                    {/* <div onClick={writingClick} className='footer-link'>Writing</div> */}
                     {/* <div onClick={aboutClick} className='footer-link'>About</div> */}
                     <div onClick={contactClick} className='footer-link'>Contact</div>
                 </div>

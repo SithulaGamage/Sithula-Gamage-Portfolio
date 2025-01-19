@@ -386,10 +386,10 @@ export const Navbar = () => {
                         </div>
 
                         {/* Writing */}
-                        <div onClick={writingClick} className={`header-nav-links-writing ${location.pathname === '/writing' ? 'active' : ''}`}>
+                        {/* <div onClick={writingClick} className={`header-nav-links-writing ${location.pathname === '/writing' ? 'active' : ''}`}>
                             <BookIcon className='header-nav-links-writing-icon' fontSize='small' />
                             Writing
-                        </div>
+                        </div> */}
 
                         {/* About */}
                         {/* <div onClick={aboutClick} className={`header-nav-links-about ${location.pathname === '/about' ? 'active' : ''}`}>
@@ -425,9 +425,9 @@ export const Navbar = () => {
                         <div onClick={() => {workClick(); setIsHamburgerMenuOpen(false)}} className={`hamburger-menu-link ${location.pathname === '/work' ? 'active' : ''}`}>
                             Work
                         </div>
-                        <div onClick={() => {writingClick(); setIsHamburgerMenuOpen(false)}} className={`hamburger-menu-link ${location.pathname === '/writing' ? 'active' : ''}`}>
+                        {/* <div onClick={() => {writingClick(); setIsHamburgerMenuOpen(false)}} className={`hamburger-menu-link ${location.pathname === '/writing' ? 'active' : ''}`}>
                             Writing
-                        </div>
+                        </div> */}
                         {/* <div onClick={() => {aboutClick(); setIsHamburgerMenuOpen(false)}} className={`hamburger-menu-link ${location.pathname === '/about' ? 'active' : ''}`}>
                             <InfoIcon className='hamburger-menu-links-icon' fontSize='small' /> About
                         </div> */}
