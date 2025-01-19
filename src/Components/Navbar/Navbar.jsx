@@ -420,19 +420,19 @@ export const Navbar = () => {
                 <div className='hamburger-menu-container'>
                     <div ref={hamburgerMenuRef} className='hamburger-menu-links-container'>
                         <div onClick={() => {homeClick(); setIsHamburgerMenuOpen(false)}} className={`hamburger-menu-link ${location.pathname === '/' ? 'active' : ''}`}>
-                            <HomeIcon className='hamburger-menu-links-icon' fontSize='small' /> Home
+                            Home
                         </div>
                         <div onClick={() => {workClick(); setIsHamburgerMenuOpen(false)}} className={`hamburger-menu-link ${location.pathname === '/work' ? 'active' : ''}`}>
-                            <WorkIcon className='hamburger-menu-links-icon' fontSize='small' /> Work
+                            Work
                         </div>
                         <div onClick={() => {writingClick(); setIsHamburgerMenuOpen(false)}} className={`hamburger-menu-link ${location.pathname === '/writing' ? 'active' : ''}`}>
-                            <BookIcon className='hamburger-menu-links-icon' fontSize='small' /> Writing
+                            Writing
                         </div>
                         {/* <div onClick={() => {aboutClick(); setIsHamburgerMenuOpen(false)}} className={`hamburger-menu-link ${location.pathname === '/about' ? 'active' : ''}`}>
                             <InfoIcon className='hamburger-menu-links-icon' fontSize='small' /> About
                         </div> */}
                         <div onClick={() => {contactClick(); setIsHamburgerMenuOpen(false)}} className={`hamburger-menu-link ${location.pathname === '/contact' ? 'active' : ''}`}>
-                            <ConnectWithoutContactIcon className='hamburger-menu-links-icon' fontSize='small' /> Contact
+                            Contact
                         </div>
 
                         <div onClick={toggleHamburgerMenu} className='hamburger-menu-close-button'>

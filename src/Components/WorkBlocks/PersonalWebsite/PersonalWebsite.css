@@ -12,7 +12,7 @@
 }
 
 /* ========================================================================== */
-/* ============================== ABOUT TITLE =============================== */
+/* ========================= PERSONAL WEBSITE TITLE ========================= */
 /* ========================================================================== */
 .personal-website-title-container {
     padding: 80px 20px 30px;
@@ -119,5 +119,74 @@
 @media (max-width: 380px) {
     .personal-website-title {
         font-size: 2.9rem;
+    }
+}
+
+/* ========================================================================== */
+/* ============================ MAIN INFORMATION ============================ */
+/* ========================================================================== */
+.personal-website-content-information {
+    width: 70%;
+    margin-top: 30px;
+    text-align: justify;
+    font-size: 1.5rem;
+    font-family: var(--secondary-font);
+    color: var(--body-text);
+    font-weight: 400;
+}
+
+.personal-website-content {
+    margin-bottom: 30px;
+}
+
+.figma-design-image {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.figma-design-image:hover {
+    transform: scale(1.02);
+}
+
+.figma-design-caption {
+    font-family: var(--main-font);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 500px) {
+    .personal-website-content-information {
+        font-size: 1.1rem;
+    }
+
+    .figma-design-caption {
+        font-size: 1.5rem;
+    }
+}
+
+/* ========================================================================== */
+/* ================================= ICONS ================================== */
+/* ========================================================================== */
+.items-used-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 80%;
+}
+
+.icon {
+    width: 60px;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 500px) {
+    .icon {
+        width: 60px;
     }
 }

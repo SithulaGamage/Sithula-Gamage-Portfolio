@@ -124,7 +124,7 @@ export const Work = () => {
                 </div>
 
                 {/* Tinkering */}
-                <div
+                {/* <div
                     className='work-option two'
                     onMouseEnter={() => handleMouseEnter('two')}
                     onMouseLeave={() => handleMouseLeave('two')}
@@ -144,7 +144,7 @@ export const Work = () => {
                             </div>
                         </Slide>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
