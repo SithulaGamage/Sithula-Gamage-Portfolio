@@ -360,11 +360,11 @@ export const Navbar = () => {
             <div className='header-container'>
                 <div onClick={homeClick} className='header-brand'>
                     {/* Logo */}
-                    <svg className='header-brand-logo' width="106" height="93" viewBox="0 0 106 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* <svg className='header-brand-logo' width="106" height="93" viewBox="0 0 106 93" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="50" cy="52" r="41" fill="var(--color-secondary)"/>
                         <circle cx="22" cy="67" r="22" fill="var(--color-tertiary)"/>
                         <path d="M106 32.5C106 50.4493 84.4493 65 66.5 65C48.5507 65 34 50.4493 34 32.5C34 14.5507 48.5507 0 66.5 0C84.4493 0 106 14.5507 106 32.5Z" fill="var(--color-primary)"/>
-                    </svg>
+                    </svg> */}
 
                     {/* Logo Name */}
                     <span className='header-brand-name'>Sithula Gamage</span>
