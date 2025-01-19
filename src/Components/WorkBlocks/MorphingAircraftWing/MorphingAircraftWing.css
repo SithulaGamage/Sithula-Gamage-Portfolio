@@ -1,0 +1,473 @@
+.morphing-aircraft-wing-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 100px;
+}
+
+/* ========================================================================== */
+/* ============================== ABOUT TITLE =============================== */
+/* ========================================================================== */
+.morphing-aircraft-wing-title-container {
+    padding: 80px 20px 30px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.morphing-aircraft-wing-title {
+    font-size: 7rem;
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    color: var(--body-text);
+    text-transform: uppercase;
+}
+
+.underline {
+    display: flex;
+    justify-content: center;
+}
+  
+.divider-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.small-circle {
+    width: 12.5px;
+    height: 12.5px;
+    border-radius: 50%;
+    background-color: var(--highlight);
+    position: relative;
+    margin: 0px 20px;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--highlight);
+    position: relative;
+}
+
+.circle:hover {
+    animation: circle-squish 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+@keyframes circle-squish {
+    0% {
+        transform: rotate3d(1, 0, 0, 0deg) scale(1);
+    }
+    33% {
+        transform: rotate3d(1, 0.5, 0.5, 45deg) scaleX(0.8) scaleY(1.5);
+    }
+    66% {
+        transform: rotate3d(1, -1, 0, 30deg) scaleX(1.5) scaleY(0.8);
+    }
+    100% {
+        transform: rotate3d(1, 0, 0, 0deg) scale(1);
+    }
+}
+  
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 930px) {
+    .morphing-aircraft-wing-title-container {
+        width: 90%;
+    }
+
+    .morphing-aircraft-wing-title {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 620px) {
+    .morphing-aircraft-wing-title-container {
+        padding: 40px 20px 30px;
+    }
+
+    .morphing-aircraft-wing-title {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .morphing-aircraft-wing-title-container {
+        padding: 20px 20px 30px;
+    }
+
+    .morphing-aircraft-wing-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .morphing-aircraft-wing-title-container {
+        width: 100%;
+    }
+
+    .morphing-aircraft-wing-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* ========================================================================== */
+/* =========================== EXTRA INFORMATION ============================ */
+/* ========================================================================== */
+.extra-information {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.team,
+.my-role {
+    font-family: var(--main-font);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: var(--body-text);    
+}
+
+.my-role {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 630px) {
+    .team {
+        font-size: 1rem;
+    }
+
+    .my-role {
+        font-size: 1.25rem;
+    }
+}
+
+/* ========================================================================== */
+/* =============================== CAD IMAGE ================================ */
+/* ========================================================================== */
+.cad-image {
+    width: 70%;
+    border-radius: 40px;
+    margin-top: 30px;
+    transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.cad-image:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+/* .cad-image:hover {
+    filter: saturate(140%) drop-shadow(0px 0px 10px var(--accent)) hue-rotate(270deg);
+} */
+
+/* ============================== MEDIA QUERIES ============================= */
+/* @media (max-width: 1000px) {
+    .cad-image {
+        width: 80%;
+    }
+} */
+/* ========================================================================== */
+/* ================================= LABELS ================================= */
+/* ========================================================================== */
+.morphing-labels-container {
+    margin-top: 30px;
+    width: 80%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-wrap: wrap;   
+    gap: 20px;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 780px) {
+    .morphing-labels-container {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 620px) {
+    .morphing-labels-container {
+        gap: 10px;
+    }
+}
+
+/* ========================================================================== */
+/* ============================ MAIN INFORMATION ============================ */
+/* ========================================================================== */
+.main-information-container {
+    width: 70%;
+    margin-top: 30px;
+}
+
+.content-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+.content-header-title {
+    font-size: 3rem;
+    text-align: center;
+    font-family: var(--main-font);
+    color: var(--highlight);
+}
+
+.content-information {
+    text-align: justify;
+    font-size: 1.25rem;
+    font-family: var(--secondary-font);
+    color: var(--body-text);
+    font-weight: 400;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 780px) {
+    .main-information-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 550px) {
+    .main-information-container {
+        width: 90%;
+    }
+
+    .content-header-title {
+        font-size: 2rem;
+    }
+
+    .content-information {
+        font-size: 1.0rem;
+    }
+
+    .bullet-point {
+        margin-bottom: 10px;
+    }
+}
+
+/* =============================== SIMULATION =============================== */
+.simulation-results-images-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.simulation-results-image {
+    width: 250px;
+    border-radius: 10px;
+    transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.simulation-results-image:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 1290px) {
+    .simulation-results-image {
+        width: 350px;
+    }
+}
+
+@media (max-width: 1180px) {
+    .simulation-results-image {
+        width: 100%;
+    }
+}
+
+/* =========================== COMPLIANT MECHANISM ========================== */
+.compliant-mechanism-images-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.compliant-mechanism-image {
+    width: 350px;
+    border-radius: 10px;    
+    transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.compliant-mechanism-image:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.compliant-mechanism-caption {
+    font-family: var(--main-font);
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--body-text);
+    margin-top: 5px;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 1180px) {
+    .compliant-mechanism-image {
+        width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .compliant-mechanism-caption {
+        font-size: 1.2rem;
+    }
+}
+
+/* ============================= FINAL PRODUCT ============================== */
+.final-results-images-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.final-results-image {
+    width: 250px;
+    border-radius: 10px;
+    transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.final-results-image:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.final-results-image.bottom {
+    width: 400px;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 1340px) {
+    .final-results-image {
+        width: 320px;
+    }
+
+    .final-results-image.bottom {
+        width: 500px;
+    }
+}
+
+@media (max-width: 1105px) {
+    .final-results-image {
+        width: 80%;
+    }
+
+    .final-results-image.bottom {
+        width: 80%;
+    }
+}
+
+@media (max-width: 650px) {
+    .final-results-image {
+        width: 100%;
+    }
+
+    .final-results-image.bottom {
+        width: 100%;
+    }
+}
+
+/* ========================== FINAL PRODUCT VIDEO =========================== */
+.video {
+    width: 100%;
+    background-color: var(--body-text);
+}
+
+.video-container {
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* ========================================================================== */
+/* ================================ CONTENTS ================================ */
+/* ========================================================================== */
+.contents-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: -10px;
+    top: 50%;
+    transform: translateX(-90%) translateY(-50%);
+    border-radius: 10px;
+    background-color: var(--highlight);
+    padding: 15px 15px 15px 30px;
+    width: 14%;
+    text-align: left;
+    transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+
+    font-family: var(--main-font);
+}
+
+.contents-container:hover {
+    transform: translateX(0%) translateY(-50%);
+}
+
+
+.contents-title {
+    color: #fff;
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+.content {
+    color: #030712;
+    font-size: 1.2rem;
+    padding-bottom: 5px;
+    transition: color 0.3s ease; /* Smooth transition effect */
+}
+
+.content:hover {
+    cursor: pointer;
+}
+
+.content.active {
+    color: white;
+    font-weight: bold;
+}
+
+.content-container.active {
+    background-color: var(--highlight-bg); /* Optional styling for active section */
+    color: white;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 1200px) {
+    .contents-title {
+        font-size: 1.6rem;
+    }
+    
+    .content {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 930px) {
+    .contents-container {
+        display: none;
+    }
+}

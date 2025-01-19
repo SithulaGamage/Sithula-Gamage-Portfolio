@@ -1,0 +1,536 @@
+/* ========================================================================== */
+/* ================================= HEADER ================================= */
+/* ========================================================================== */
+.header {
+    width: 100vw;
+    padding-bottom: 10px;
+}
+
+.header-container {
+    width: 90%;
+    height: 48px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    /* background-color: antiquewhite; */
+    padding: 60px 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--text);
+}
+
+@media (max-width: 380px) {
+    .header-container {
+        width: 80%;
+    }
+}
+
+/* ========================================================================== */
+/* ============================== HEADER THEME ============================== */
+/* ========================================================================== */
+.header-theme-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(24, 24, 27, 0.8);
+    position: fixed;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-theme-contents {
+    background-color: #e6e6e6;
+    padding: 100px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 90%;
+    max-height: 85%;
+
+    z-index: 2;
+}
+
+.header-theme-title {
+    font-family: var(--main-font);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin: 0px 0px 20px;
+}
+
+.header-theme-close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #e6e6e6;
+    border-radius: 20%;
+}
+
+.header-theme-close-button:hover {
+    cursor: pointer;
+    background-color: var(--background-overlay);
+}
+
+.header-theme-options-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 35px 20px;
+    justify-content: center;
+    align-items: center;
+
+    max-height: 90%;
+    overflow-y: auto;
+    border-bottom: 3px solid rgba(24, 24, 27, 0.8);
+    padding: 10px 40px 60px;
+    /* border-radius: 5px; */
+}
+
+.header-theme-options-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.header-theme-options-container::-webkit-scrollbar-thumb {
+    background-color: #888; 
+    border-radius: 4px;
+}
+
+.header-theme-options-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.header-theme-options-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1; 
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 450px) {
+    .header-theme-contents {
+        padding: 50px 80px;
+    }
+
+    .header-theme-options-container {
+        padding: 10px 20px 60px;
+    }
+
+    .header-theme-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .header-theme-contents {
+        padding: 50px 80px;
+    }
+
+    .header-theme-options-container {
+        padding: 10px 20px 60px;
+    }
+}
+
+@media (max-width: 350px) {
+    .header-theme-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* ================================= OPTION ================================= */
+.option {
+    position: relative;
+    background-color: #030712;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 3px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    padding: 20px 30px;
+
+    font-family: var(--main-font);
+    font-size: 1.25rem;
+    letter-spacing: 0.25px;
+    color: #e6e6e6;
+
+    transition: all 0.1s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.option:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+}
+
+.option.selected:hover {
+    transform: scale(1);
+    box-shadow: none;
+}
+
+.option.selected {
+    border-color: var(--highlight);
+}
+
+.avatar-container {
+    margin-top: 10px;
+    display: flex;
+    z-index: 0;
+}
+
+.avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 2px solid #f1f1f1;
+    position: relative;
+    margin: 0px -4px;
+}
+
+.arrow-icon {
+    transform: scale(2);
+    position: absolute;
+    bottom: -35px;
+    color: var(--highlight);
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 1015px) {
+    .option {    
+        padding: 20px 50px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 870px) {
+    .option {    
+        padding: 20px 60px;
+    }
+
+    .avatar {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .option {    
+        padding: 20px 40px;
+    }
+
+    .avatar {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .option {    
+        padding: 20px 20px;
+    }
+
+    .avatar {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+/* ========================================================================== */
+/* ============================== HEADER BRAND ============================== */
+/* ========================================================================== */
+.header-brand {
+    display: flex;
+    flex-direction: row;
+    align-items: inherit;
+}
+
+.header-brand:hover {
+    cursor: pointer;
+}
+
+.header-brand-logo {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 1rem;
+}
+
+.header-brand-logo:hover {
+    animation: logo-movement 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+    transform-origin: center;
+}
+
+@keyframes logo-movement {
+    0% {
+        transform: rotate3d(1, 0, 0, 0deg) scale(1);
+    }
+    33% {
+        transform: rotate3d(1, 0.5, 0.5, 45deg) scaleX(0.8) scaleY(1.5);
+    }
+    66% {
+        transform: rotate3d(1, -1, 0, 30deg) scaleX(1.5) scaleY(0.8);
+    }
+    100% {
+        transform: rotate3d(1, 0, 0, 0deg) scale(1);
+    }
+}
+
+.header-brand-name {
+    font-family: var(--main-font);
+    font-size: 2rem;
+    transition: all 0.1s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 380px) {
+    .header-brand-logo {
+        height: 1.5rem;
+        width: 1.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .header-brand-name {
+        font-size: 1.5rem;
+    }
+}
+
+/* ========================================================================== */
+/* =============================== HEADER NAV =============================== */
+/* ========================================================================== */
+.header-nav {
+    height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+/* ============================ HEADER NAV LINKS ============================ */
+.header-nav-links {
+    display: flex;
+    align-items: inherit;
+
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+}
+
+.header-nav-links div {
+    padding: 9.75px 17.5px;
+    position: relative; /* Needed for positioning the ::after element */
+}
+
+.header-nav-links div:hover {
+    cursor: pointer;
+}
+
+.header-nav-links div::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 0;
+    background: var(--accent);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease; 
+}
+
+.header-nav-links div:hover::after {
+    width: 100%;
+}
+
+.header-nav-links-home,
+.header-nav-links-work,
+.header-nav-links-writing,
+.header-nav-links-about,
+.header-nav-links-contact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header-nav-links-home-icon,
+.header-nav-links-work-icon,
+.header-nav-links-writing-icon, 
+.header-nav-links-about-icon, 
+.header-nav-links-contact-icon {
+    margin-right: 5px;
+    margin-left: -1.5px;
+}
+
+.header-nav-links-home.active::after,
+.header-nav-links-work.active::after,
+.header-nav-links-writing.active::after,
+.header-nav-links-about.active::after,
+.header-nav-links-contact.active::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--highlight);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* transition: width 0.3s ease;  */
+}
+
+/* ======================== HEADER NAV THEME BUTTON ======================== */
+.header-nav-toggle-theme-button {
+    height: 48px;
+    width: 48px;
+    background-color: var(--accent);
+    color: var(--highlight);
+    border-radius: 50%;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Clip the glare effect to the circle */
+}
+
+.header-nav-toggle-theme-button:hover {
+    cursor: pointer;
+}
+
+.header-nav-toggle-theme-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%; 
+    background: rgba(255, 255, 255, 0.5);
+    transform: rotate(-45deg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.header-nav-toggle-theme-button:hover::before {
+    opacity: 1;
+    animation: glare-animation 1s ease forwards;
+}
+
+@keyframes glare-animation {
+    0% {
+        transform: rotate(-45deg) translateX(-150%);
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(-45deg) translateX(150%);
+        opacity: 0;
+    }
+}
+
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 380px) {
+    .header-nav-toggle-theme-button {
+        height: 32px;
+        width: 32px;
+        margin-left: 10px;
+    }
+}
+
+/* ========================================================================== */
+/* ============================== HAMBURGER MENU ============================ */
+/* ========================================================================== */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger-menu-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(24, 24, 27, 0.8);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0; 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger-menu-links-container {
+    background-color: #e6e6e6;
+    padding: 100px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 90%;
+    max-height: 85%;
+
+    width: 80%;
+    height: 80%;
+    z-index: 2;
+}
+
+.hamburger-menu-link {
+    font-family: var(--main-font);
+    display: flex;
+    align-items: center;
+    padding: 20px 0px;
+    color: #030712;
+    cursor: pointer;
+    font-size: 3rem;
+}
+
+.hamburger-menu-link.active {
+    color: var(--highlight);
+}
+
+.hamburger-menu-link:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.hamburger-menu-links-icon {
+    transform: scale(2);
+    margin-right: 25px;
+}
+
+.hamburger-menu-close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #e6e6e6;
+    border-radius: 20%;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 380px) {
+    .hamburger-menu-icon {
+        transform: scale(0.75);
+    }
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 860px) {
+    .header-nav-links {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+}

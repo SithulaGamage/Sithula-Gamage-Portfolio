@@ -1,0 +1,124 @@
+.tinkering-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 100px;
+}
+
+/* ========================================================================== */
+/* ============================== ABOUT TITLE =============================== */
+/* ========================================================================== */
+.tinkering-title-container {
+    padding: 80px 20px 30px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.tinkering-title {
+    font-size: 7rem;
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    color: var(--body-text);
+    text-transform: uppercase;
+}
+
+.underline {
+    display: flex;
+    justify-content: center;
+}
+  
+.divider-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.small-circle {
+    width: 12.5px;
+    height: 12.5px;
+    border-radius: 50%;
+    background-color: var(--highlight);
+    position: relative;
+    margin: 0px 20px;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--highlight);
+    position: relative;
+}
+
+.circle:hover {
+    animation: circle-squish 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+@keyframes circle-squish {
+    0% {
+        transform: rotate3d(1, 0, 0, 0deg) scale(1);
+    }
+    33% {
+        transform: rotate3d(1, 0.5, 0.5, 45deg) scaleX(0.8) scaleY(1.5);
+    }
+    66% {
+        transform: rotate3d(1, -1, 0, 30deg) scaleX(1.5) scaleY(0.8);
+    }
+    100% {
+        transform: rotate3d(1, 0, 0, 0deg) scale(1);
+    }
+}
+ 
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 1220px) {
+    .tinkering-title-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 920px) {
+    .tinkering-title-container {
+        padding: 40px 20px 30px;
+    }
+
+    .tinkering-title {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 670px) {
+    .tinkering-title-container {
+        width: 90%;
+        padding: 20px 20px 30px;
+    }
+
+    .tinkering-title {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 490px) {
+    .tinkering-title-container {
+        width: 100%;
+    }
+
+    .tinkering-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .tinkering-title {
+        font-size: 2.8rem;
+    }
+}

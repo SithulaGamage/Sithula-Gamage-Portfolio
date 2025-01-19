@@ -1,0 +1,29 @@
+:root{
+    --text: #030712;
+    --body-text: #030712;
+    --background: #fafafa;
+    --highlight: #e94560;
+    --highlight-opacity: #e945608a;
+    --accent: #e6e6e6; 
+    --background-overlay: rgba(24, 24, 27, 0.8);
+
+    --main-font: "Bebas Neue", serif;
+    --secondary-font: "Playfair Display", serif;
+    --tertiary-font: "Barrio", serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: var(--background);
+    scroll-behavior: auto !important;
+    overflow-x: hidden;
+}
+
+/* *::selection {
+    background: var(--highlight-opacity);
+} */

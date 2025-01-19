@@ -1,0 +1,147 @@
+/* ========================================================================== */
+/* ================================== BODY ================================== */
+/* ========================================================================== */
+.body-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    /* background-color: rgb(185, 155, 116); */
+
+    display: flex;
+    flex-direction: column;
+}
+
+.body-information {
+    padding: 90px 0px 110px;
+    /* padding: 60px 0px 0px; */
+    font-family: var(--main-font);
+    font-weight: 400;
+
+    color: var(--body-text);
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 680px) {
+    .body-information {
+        padding: 50px 0px 80px;
+    }
+}
+
+@media (max-width: 380px) {
+    .body-information {
+        padding: 30px 0px 80px;
+    }
+}
+
+/* ========================================================================== */
+/* ============================= GREETING TEXT ============================== */
+/* ========================================================================== */
+.hello-greeting-wrapper {
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.hello-greeting {
+    color: var(--highlight);
+    font-weight: bold;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+
+.name-introduction {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 680px) {
+    .name-introduction {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 410px) {
+    .name-introduction {
+        font-size: 1.5rem;
+    }
+}
+
+/* ========================================================================== */
+/* ============================== DEGREE TEXT =============================== */
+/* ========================================================================== */
+.degree {
+    font-family: var(--secondary-font);
+    font-size: 6rem;
+    line-height: 6.5rem;
+    letter-spacing: -0.25rem;
+    /* text-transform: uppercase; */
+    font-weight: 700;
+}
+
+.unsw-text {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.unsw-text::before,
+.unsw-text::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0px;
+    height: 2rem;
+    z-index: -1;
+    transition: width .3s cubic-bezier(.86,0,.07,1);
+}
+
+.unsw-text::before {
+    width: 100%;
+    background-color: var(--accent);
+}
+
+.unsw-text::after {
+    width: 0%;
+    background-color: var(--highlight);
+}
+
+.unsw-text:hover::after {
+    width: 100%;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 930px) {
+    .degree {
+        font-size: 4.5rem;
+        line-height: 5.5rem;
+        letter-spacing: -0.25rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .degree {
+        font-size: 3.5rem;
+        line-height: 4.5rem;
+        letter-spacing: -0.20rem;
+    }
+}
+
+@media (max-width: 410px) {
+    .degree {
+        font-size: 3rem;
+        line-height: 4rem;
+        letter-spacing: -0.20rem;
+    }
+
+    .unsw-text::before,
+    .unsw-text::after {
+        display: none;
+    }
+}
