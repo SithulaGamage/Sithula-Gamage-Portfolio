@@ -168,7 +168,6 @@
 
 .work-option-information-container {
     position: absolute;
-    display: flex;
     top: 0;
     bottom: 0;
     left: 0;
@@ -263,6 +262,10 @@
 
     .work-option.three {
         background-size: 41.5%;
+    }
+
+    .work-option:hover .work-option-information-container {
+        display: none;
     }
 }
 
