@@ -81,6 +81,8 @@ export const PersonalWebsite = () => {
                 <img className='icon' src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />
             </div>
 
+            <div className='year'>January 2025</div>
+
             <div className='personal-website-content-information'>
                 <div className='personal-website-content'>
                     When I was younger, I would watch videos of people reacting to incredible websites showcasing personal work or companies. These websites were extraordinary—elegant, rich, and captivating. It was clear why people were hooked; they just drew you in and made you want to explore every page. As a young teenager, I was determined to create something like that myself. &quot;How hard could it be?&quot; I thought. Little did young Sithula know what was in store.
@@ -106,9 +108,9 @@ export const PersonalWebsite = () => {
                     {[
                         // { key: 'CompliantMechanismOne', caption: 'Cascading Model' },
                         { key: 'FigmaDesignOne', caption: 'Figma Design One' },
-                        { key: 'FigmaDesignTwo', caption: 'Figma Design Two' },
-                        { key: 'FigmaDesignThree', caption: 'Figma Design Three' },
-                        { key: 'FigmaDesignFour', caption: 'Figma Design Four' },
+                        // { key: 'FigmaDesignTwo', caption: 'Figma Design Two' },
+                        { key: 'FigmaDesignThree', caption: 'Figma Design Two' },
+                        { key: 'FigmaDesignFour', caption: 'Figma Design Three' },
                     ].map(({ key, caption }, index) => (
                         loadedImages[key] && (
                             <div key={index} className='figma-design-item'>

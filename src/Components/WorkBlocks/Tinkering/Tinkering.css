@@ -77,7 +77,6 @@
         transform: rotate3d(1, 0, 0, 0deg) scale(1);
     }
 }
- 
 
 /* ============================== MEDIA QUERIES ============================= */
 @media (max-width: 1220px) {
@@ -120,5 +119,129 @@
 @media (max-width: 400px) {
     .tinkering-title {
         font-size: 2.8rem;
+    }
+}
+
+/* ========================================================================== */
+/* =========================== TINKERING PROJECTS =========================== */
+/* ========================================================================== */
+.tinker-project {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tinker-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: var(--main-font);
+    font-size: 3rem;
+    color: var(--body-text);
+}
+
+.tinker-date {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    color: var(--body-text);
+    font-style: italic;
+}
+
+.tinker-images-container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 50px;
+    border-radius: 50px;
+    background-color: rgb(0, 0, 0);
+}
+
+.tinker-image {
+    width: 350px;
+    border-radius: 10px;  
+    transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.tinker-image:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.tinker-description {
+    text-align: justify;
+    margin-bottom: 10px;
+    font-family: var(--secondary-font);
+    font-size: 1.5rem;
+    color: var(--body-text);
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 1320px) {
+    .tinker-image {
+        width: 280px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .tinker-image {
+        width: 220px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .tinker-image {
+        width: 100%;
+    }
+    
+    .tinker-images-container {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 700px) {
+    .tinker-images-container {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 700px) {
+    .tinker-images-container {
+        gap: 10px;
+        padding: 20px;
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 670px) {
+    .tinker-title {
+        font-size: 2rem;
+    }
+    
+    .tinker-date {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .tinker-title {
+        margin-top: 10px;
+        font-size: 1.5rem;
+    }
+    
+    .tinker-date {
+        font-size: 1.0rem;
+    }
+
+    .tinker-description {
+        text-align: justify;
+        margin-bottom: 10px;
+        font-family: var(--secondary-font);
+        font-size: 1.25rem;
+        color: var(--body-text);
     }
 }

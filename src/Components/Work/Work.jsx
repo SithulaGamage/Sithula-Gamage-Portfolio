@@ -70,7 +70,7 @@ export const Work = () => {
             {/* Work Information */}
             <div className='work-options-container'>
                 {/* 2025 Projects */}
-                <div className='work-year-title'>2025</div>
+                {/* <div className='work-year-title'>2025</div> */}
                 {/* Personal Website */}
                 <div
                     className='work-option three'
@@ -98,7 +98,7 @@ export const Work = () => {
 
 
                 {/* 2024 Projects */}
-                <div className='work-year-title'>2024</div>
+                {/* <div className='work-year-title'>2024</div> */}
                 {/* Morphing Aircraft Wing */}
                 <div
                     className='work-option one'
@@ -124,7 +124,7 @@ export const Work = () => {
                 </div>
 
                 {/* Tinkering */}
-                {/* <div
+                <div
                     className='work-option two'
                     onMouseEnter={() => handleMouseEnter('two')}
                     onMouseLeave={() => handleMouseLeave('two')}
@@ -144,7 +144,7 @@ export const Work = () => {
                             </div>
                         </Slide>
                     </div>
-                </div> */}
+                </div>
             </div>
         </div>
     );

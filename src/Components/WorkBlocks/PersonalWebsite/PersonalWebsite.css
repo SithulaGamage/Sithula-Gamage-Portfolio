@@ -127,7 +127,7 @@
 /* ========================================================================== */
 .personal-website-content-information {
     width: 70%;
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: justify;
     font-size: 1.5rem;
     font-family: var(--secondary-font);
@@ -188,5 +188,21 @@
 @media (max-width: 500px) {
     .icon {
         width: 60px;
+    }
+}
+
+.year {
+    font-family: var(--main-font);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: var(--body-text);  
+    margin-top: 25px;  
+    font-style: italic;
+}
+
+/* ============================== MEDIA QUERIES ============================= */
+@media (max-width: 630px) {
+    .year {
+        font-size: 1rem;
     }
 }

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import './Tinkering.css';
 import Divider from '@mui/material/Divider';
+import Backdrop from '@mui/material/Backdrop';
 
 export const Tinkering = () => {
     const dividerStyle = {
@@ -10,6 +11,50 @@ export const Tinkering = () => {
         position: 'relative',
         borderRadius: 10,
     }
+
+    // =========================================================================
+    // ============================== LOAD IMAGES ==============================
+    // =========================================================================
+    const [open, setOpen] = useState(false);
+    const [currentImage, setCurrentImage] = useState(null);
+    const [loadedImages, setLoadedImages] = useState({});
+
+    useEffect(() => {
+        const loadImages = async () => {
+            const images = await Promise.all([
+                import('./Images/CoatHanger/CoatHangerOne.svg'),
+                import('./Images/CoatHanger/CoatHangerTwo.svg'),
+                import('./Images/CoatHanger/CoatHangerThree.svg'),
+                import('./Images/CoatHanger/CoatHangerFour.svg'),
+            ]);
+
+            const keys = [
+                'CoatHangerOne',
+                'CoatHangerTwo',
+                'CoatHangerThree',
+                'CoatHangerFour',
+            ];
+
+            const loaded = keys.reduce((acc, key, index) => {
+                acc[key] = images[index].default;
+                return acc;
+            }, {});
+
+            setLoadedImages(loaded);
+        };
+
+        loadImages();
+    }, []);
+
+    const handleOpen = (image) => {
+        setCurrentImage(image);
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+        setCurrentImage(null);
+    };
 
     return (
         <div className='tinkering-container'>
@@ -27,9 +72,43 @@ export const Tinkering = () => {
                 </div>
             </div>
 
-            <div className='coming-soon'>
-                Coming Soon...
+            <div className='tinker-project'>
+                <div className='tinker-title'>Coat Hanger Rack</div>
+                <div className='tinker-date'>December 2024</div>
+
+                <div className='tinker-images-container'>
+                    {[
+                        { key: 'CoatHangerOne'},
+                        { key: 'CoatHangerTwo'},
+                        { key: 'CoatHangerThree'},
+                        { key: 'CoatHangerFour'},
+                    ].map(({ key}, index) => (
+                        loadedImages[key] && (
+                            <div key={index} className='coat-hanger-item'>
+                                <img 
+                                    src={loadedImages[key]} 
+                                    className='tinker-image'
+                                    loading='lazy'
+                                    onClick={() => handleOpen(loadedImages[key])}
+                                />
+                            </div>
+                        )
+                    ))}
+                </div>
+
+                <div className='tinker-description'>
+                    In my parents&apos; wardrobe, I noticed an unused space that could be better utilized. To address this, I designed and 3D-printed a coat hanger rack identical to the existing ones. Using OnShape, I took rough measurements to create a precise model that fit seamlessly into the space. Once printed, I secured the beam holders in place with M3 screws, ensuring stability while allowing the beam to be easily removed if needed.
+                </div>
             </div>
+
+            {/* Backdrop */}
+            <Backdrop
+                sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1 })}
+                open={open}
+                onClick={handleClose}
+            >
+                {currentImage && <img src={currentImage} alt="Expanded View" style={{ width: '80%', maxHeight: '90%' }} />}
+            </Backdrop>
         </div>
     )
 }

@@ -171,7 +171,7 @@ export const MorphingAircraftWing = () => {
                             }}
                             className={`content ${activeSection === id ? "active" : ""}`}
                         >
-                            {id.replace(/([A-Z])/g, " $1")} {/* Convert camelCase to readable text */}
+                            {id.replace(/([A-Z])/g, " $1")}
                         </div>
                     ))}
                 </div>
@@ -193,6 +193,7 @@ export const MorphingAircraftWing = () => {
             <div className='extra-information'>
                 <div className='my-role'>My Role: Primary CAD Designer –– Primary Tester –– Technical Recorder</div>
                 <div className='team'>Team: Sithula Gamage, <span className='member-click' onClick={ryanKwokClickHandle}>Ryan Kwok</span>, Felix Pham, Madeline Chang, Samantha Chan</div>
+                <div className='year'>September - December 2024</div>
             </div>
 
             {/* Dynamically Loaded CAD Image */}
