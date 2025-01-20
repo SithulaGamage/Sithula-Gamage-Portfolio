@@ -471,3 +471,8 @@
         display: none;
     }
 }
+
+.member-click:hover {
+    filter: opacity(0.8);
+    cursor: pointer;
+}

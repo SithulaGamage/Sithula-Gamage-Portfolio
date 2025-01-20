@@ -154,6 +154,8 @@ export const MorphingAircraftWing = () => {
         ref.current.scrollIntoView({ behavior: "smooth" });
     };
 
+    const ryanKwokClickHandle = () => { window.open('https://www.linkedin.com/in/ryan-kwok-8549452a5/', '_blank') }; 
+
     return (
         <div className='morphing-aircraft-wing-container'>
             {/* Contents */}
@@ -190,7 +192,7 @@ export const MorphingAircraftWing = () => {
 
             <div className='extra-information'>
                 <div className='my-role'>My Role: Primary CAD Designer –– Primary Tester –– Technical Recorder</div>
-                <div className='team'>Team: Sithula Gamage, Ryan Kwok, Felix Pham, Madeline Chang, Samantha Chan</div>
+                <div className='team'>Team: Sithula Gamage, <span className='member-click' onClick={ryanKwokClickHandle}>Ryan Kwok</span>, Felix Pham, Madeline Chang, Samantha Chan</div>
             </div>
 
             {/* Dynamically Loaded CAD Image */}
