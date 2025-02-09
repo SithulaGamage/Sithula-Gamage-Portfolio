@@ -65,7 +65,7 @@ export const Footer = () => {
             
             <div className='footer-text-container'>
                 <div>© 2024 Sithula gamage. All Rights Reserved </div>
-                <div>Last Updated on the 19th of January 2025</div>
+                <div>Last Updated on the 9th of February 2025</div>
             </div>
         </div>
     )

@@ -142,7 +142,6 @@
 
 .tinker-date {
     text-align: center;
-    margin-bottom: 20px;
     font-family: var(--main-font);
     font-size: 1.5rem;
     color: var(--body-text);
@@ -154,22 +153,20 @@
     justify-content: center;
     margin: auto;
     flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 30px;
-    padding: 50px;
-    border-radius: 50px;
-    background-color: rgb(0, 0, 0);
+    gap: 20px;
+    padding: 20px;
 }
 
 .tinker-image {
     width: 350px;
     border-radius: 10px;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .tinker-image:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.01);
 }
 
 .tinker-description {
@@ -178,6 +175,7 @@
     font-family: var(--secondary-font);
     font-size: 1.5rem;
     color: var(--body-text);
+    margin-bottom: 30px;
 }
 
 /* ============================== MEDIA QUERIES ============================= */

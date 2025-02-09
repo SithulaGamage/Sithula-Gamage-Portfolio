@@ -26,6 +26,11 @@ export const Tinkering = () => {
                 import('./Images/CoatHanger/CoatHangerTwo.svg'),
                 import('./Images/CoatHanger/CoatHangerThree.svg'),
                 import('./Images/CoatHanger/CoatHangerFour.svg'),
+                import('./Images/WatchHolder/WatchHolderOne.svg'),
+                import('./Images/WatchHolder/WatchHolderTwo.svg'),
+                import('./Images/WatchHolder/WatchHolderThree.svg'),
+                import('./Images/WatchHolder/WatchHolderFour.svg'),
+                import('./Images/WatchHolder/WatchHolderFive.svg'),
             ]);
 
             const keys = [
@@ -33,6 +38,11 @@ export const Tinkering = () => {
                 'CoatHangerTwo',
                 'CoatHangerThree',
                 'CoatHangerFour',
+                'WatchHolderOne',
+                'WatchHolderTwo',
+                'WatchHolderThree',
+                'WatchHolderFour',
+                'WatchHolderFive',
             ];
 
             const loaded = keys.reduce((acc, key, index) => {
@@ -66,12 +76,43 @@ export const Tinkering = () => {
                         <div className="small-circle" />
                         <div className="circle" />
                         <div className="small-circle" />
-                        <Divider sx={dividerStyle}
-                        />
+                        <Divider sx={dividerStyle} />
                     </div>
                 </div>
             </div>
 
+            {/* Watch Holder */}
+            <div className='tinker-project'>
+                <div className='tinker-title'>Watch Holders</div>
+                <div className='tinker-date'>February 2025</div>
+
+                <div className='tinker-images-container'>
+                    {[
+                        { key: 'WatchHolderOne'},
+                        { key: 'WatchHolderTwo'},
+                        { key: 'WatchHolderThree'},
+                        { key: 'WatchHolderFour'},
+                        { key: 'WatchHolderFive'},
+                    ].map(({ key}, index) => (
+                        loadedImages[key] && (
+                            <div key={index} className='watch-holder-item'>
+                                <img 
+                                    src={loadedImages[key]} 
+                                    className='tinker-image'
+                                    loading='lazy'
+                                    onClick={() => handleOpen(loadedImages[key])}
+                                />
+                            </div>
+                        )
+                    ))}
+                </div>
+
+                <div className='tinker-description'>
+                    Noticing my watches cluttering my desk, I designed and 3D-printed custom holders to keep them organized. Using OnShape, I took rough measurements to ensure a precise fit. Once printed, I assembled them securely, creating a sleek and functional storage solution that keeps my watches easily accessible and my workspace tidy.
+                </div>
+            </div>
+
+            {/* Coat Hanger Rack */}
             <div className='tinker-project'>
                 <div className='tinker-title'>Coat Hanger Rack</div>
                 <div className='tinker-date'>December 2024</div>
