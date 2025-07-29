@@ -90,7 +90,7 @@ export const Work = () => {
                     <div className='work-option-information-container'>
                         <Slide direction="up" in={hoverState.three} timeout={200} mountOnEnter unmountOnExit>
                             <div className='work-option-information'>
-                                Am I CS student? No am I not. Why did I make this? I am not quite sure to be honest - I thought it would be a fun thing to try out. (Took a lot longer than expected to finish)
+                                Am I CS student? No am I not. Why did I make this? I am not quite sure to be honest - I thought it would be a fun thing to try out.
                             </div>
                         </Slide>
                     </div>
