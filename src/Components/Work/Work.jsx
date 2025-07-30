@@ -72,7 +72,7 @@ export const Work = () => {
                 {/* 2025 Projects */}
                 {/* <div className='work-year-title'>2025</div> */}
                 {/* Personal Website */}
-                <div
+                {/* <div
                     className='work-option three'
                     onMouseEnter={() => handleMouseEnter('three')}
                     onMouseLeave={() => handleMouseLeave('three')}
@@ -94,7 +94,7 @@ export const Work = () => {
                             </div>
                         </Slide>
                     </div>
-                </div>
+                </div> */}
 
 
                 {/* 2024 Projects */}
