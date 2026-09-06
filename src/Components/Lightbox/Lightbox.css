@@ -1,0 +1,16 @@
+.lightbox-backdrop {
+    background-color: rgba(6, 8, 12, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-5);
+}
+
+.lightbox-image {
+    max-width: min(1000px, 90vw);
+    max-height: 88vh;
+    width: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    object-fit: contain;
+}

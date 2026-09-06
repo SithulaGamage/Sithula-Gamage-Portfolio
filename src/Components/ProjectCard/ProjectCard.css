@@ -1,0 +1,95 @@
+.project-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+}
+
+.project-card:hover,
+.project-card:focus-visible {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-accent);
+    transform: translateY(-3px);
+}
+
+.project-card-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+}
+
+.project-card-media-image {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-accent-soft);
+    background-size: cover;
+    background-position: center;
+    transition: transform var(--transition-base);
+}
+
+.project-card:hover .project-card-media-image {
+    transform: scale(1.04);
+}
+
+.project-card--featured .project-card-media {
+    aspect-ratio: 16 / 10;
+}
+
+.project-card-media-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(6, 8, 12, 0.82), rgba(6, 8, 12, 0) 60%);
+}
+
+.project-card-media-overlay {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-5);
+}
+
+.project-card-title {
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.project-card--featured .project-card-title {
+    font-size: 1.6rem;
+}
+
+.project-card-arrow {
+    color: rgba(255, 255, 255, 0.85);
+    transition: transform var(--transition-fast), color var(--transition-fast);
+    flex-shrink: 0;
+    margin-bottom: 3px;
+}
+
+.project-card:hover .project-card-arrow {
+    color: #ffffff;
+    transform: translate(2px, -2px);
+}
+
+.project-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    flex: 1;
+}
+
+.project-card-description {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+.project-card-tech {
+    margin-top: auto;
+    padding-top: var(--space-2);
+}

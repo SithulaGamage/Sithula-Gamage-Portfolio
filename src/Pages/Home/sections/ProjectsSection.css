@@ -1,0 +1,23 @@
+.projects-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+}
+
+.projects-secondary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+    max-width: 340px;
+}
+
+@media (max-width: 760px) {
+    .projects-featured-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-secondary-grid {
+        max-width: 320px;
+    }
+}
