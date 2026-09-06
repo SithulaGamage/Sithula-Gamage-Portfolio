@@ -1,0 +1,23 @@
+.contact-section {
+    padding-bottom: var(--space-9);
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.contact-popover-text {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.85rem;
+}
+
+.contact-footnote {
+    margin-top: var(--space-7);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-faint);
+    font-size: 0.8rem;
+}

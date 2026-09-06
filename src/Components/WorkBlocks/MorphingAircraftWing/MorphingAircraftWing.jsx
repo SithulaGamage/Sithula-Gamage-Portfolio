@@ -1,340 +1,188 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './MorphingAircraftWing.css';
-import Divider from '@mui/material/Divider';
-import Chip from '@mui/material/Chip';
-import Backdrop from '@mui/material/Backdrop';
-
+import { CaseStudyLayout, CaseStudySection } from '../../CaseStudy/CaseStudyLayout';
+import { Lightbox } from '../../Lightbox/Lightbox';
+import { useLightbox } from '../../../hooks/useLightbox';
+import { useLazyImages } from '../../../hooks/useLazyImages';
+import { getProjectBySlug } from '../../../data/projects';
 import VideoThumbnail from './Images/MorphingWingFinalImages/videoThumbnail.svg';
 import MorphingWingVideo from './Images/MorphingWingFinalImages/video.mp4';
 
-import { useMediaQuery } from '@mui/material';
+const project = getProjectBySlug('morphing-aircraft-wing');
+
+const SIMULATION_IMAGES = [
+    { key: 'simOne', label: 'Simulation Results 1' },
+    { key: 'simTwo', label: 'Simulation Results 2' },
+    { key: 'simThree', label: 'Simulation Results 3' },
+];
+
+const COMPLIANT_MECHANISMS = [
+    { key: 'mechTwo', caption: 'Helical Model - Long Wavelength' },
+    { key: 'mechThree', caption: 'Helical Model - Short Wavelength' },
+    { key: 'mechFour', caption: 'Flanged S-Model' },
+    { key: 'mechFive', caption: 'Slanted S-Model' },
+    { key: 'mechSix', caption: 'Large V-Model' },
+    { key: 'mechSeven', caption: 'Helical V-Model' },
+    { key: 'mechEight', caption: 'S-Model' },
+    { key: 'mechNine', caption: 'Fishbone Model' },
+];
+
+const FINAL_IMAGES = ['finalOne', 'finalTwo', 'finalThree', 'finalFour'];
 
 export const MorphingAircraftWing = () => {
-    // =========================================================================
-    // ================================ STYLES =================================
-    // =========================================================================
-    const dividerStyle = {
-        flex: 1,
-        borderBottomWidth: 5,
-        borderColor: 'var(--highlight)',
-        position: 'relative',
-        borderRadius: 10,
-    };
+    const images = useLazyImages({
+        cad: () => import('./Images/CADImage.svg'),
+        simOne: () => import('./Images/Simulation/simulationResultsOne.svg'),
+        simTwo: () => import('./Images/Simulation/simulationResultsTwo.svg'),
+        simThree: () => import('./Images/Simulation/simulationResultsThree.svg'),
+        mechTwo: () => import('./Images/CompliantMechanisms/compliantMechanismTwo.svg'),
+        mechThree: () => import('./Images/CompliantMechanisms/compliantMechanismThree.svg'),
+        mechFour: () => import('./Images/CompliantMechanisms/compliantMechanismFour.svg'),
+        mechFive: () => import('./Images/CompliantMechanisms/compliantMechanismFive.svg'),
+        mechSix: () => import('./Images/CompliantMechanisms/compliantMechanismSix.svg'),
+        mechSeven: () => import('./Images/CompliantMechanisms/compliantMechanismSeven.svg'),
+        mechEight: () => import('./Images/CompliantMechanisms/compliantMechanismEight.svg'),
+        mechNine: () => import('./Images/CompliantMechanisms/compliantMechanismNine.svg'),
+        finalOne: () => import('./Images/MorphingWingFinalImages/morphingWingImageOne.svg'),
+        finalTwo: () => import('./Images/MorphingWingFinalImages/morphingWingImageTwo.svg'),
+        finalThree: () => import('./Images/MorphingWingFinalImages/morphingWingImageThree.svg'),
+        finalFour: () => import('./Images/MorphingWingFinalImages/morphingWingImageFour.svg'),
+        finalFive: () => import('./Images/MorphingWingFinalImages/morphingWingImageFive.svg'),
+        finalSix: () => import('./Images/MorphingWingFinalImages/morphingWingImageSix.svg'),
+    });
 
-    const isSmallScreenOne = useMediaQuery('(max-width:780px)');
-    const isSmallScreenTwo = useMediaQuery('(max-width:620px)');
-
-    const morphingChipStyle = {
-        backgroundColor: 'var(--highlight)',
-        fontFamily: 'var(--main-font)',
-        color: 'var(--body-text)',
-        padding: isSmallScreenTwo ? '16px 4px' : '24px 5px',
-        fontSize: isSmallScreenTwo ? '1rem' : (isSmallScreenOne ? '1.5rem' : '2rem'),
-        borderRadius: '16px',
-    };
-
-    // =========================================================================
-    // ============================== LOAD IMAGES ==============================
-    // =========================================================================
-    const [open, setOpen] = useState(false);
-    const [currentImage, setCurrentImage] = useState(null);
-    const [loadedImages, setLoadedImages] = useState({});
-
-    useEffect(() => {
-        const loadImages = async () => {
-            const images = await Promise.all([
-                import('./Images/CADImage.svg'),
-                import('./Images/Simulation/simulationResultsOne.svg'),
-                import('./Images/Simulation/simulationResultsTwo.svg'),
-                import('./Images/Simulation/simulationResultsThree.svg'),
-                import('./Images/CompliantMechanisms/compliantMechanismOne.svg'),
-                import('./Images/CompliantMechanisms/compliantMechanismTwo.svg'),
-                import('./Images/CompliantMechanisms/compliantMechanismThree.svg'),
-                import('./Images/CompliantMechanisms/compliantMechanismFour.svg'),
-                import('./Images/CompliantMechanisms/compliantMechanismFive.svg'),
-                import('./Images/CompliantMechanisms/compliantMechanismSix.svg'),
-                import('./Images/CompliantMechanisms/compliantMechanismSeven.svg'),
-                import('./Images/CompliantMechanisms/compliantMechanismEight.svg'),
-                import('./Images/CompliantMechanisms/compliantMechanismNine.svg'),
-                import('./Images/MorphingWingFinalImages/morphingWingImageOne.svg'),
-                import('./Images/MorphingWingFinalImages/morphingWingImageTwo.svg'),
-                import('./Images/MorphingWingFinalImages/morphingWingImageThree.svg'),
-                import('./Images/MorphingWingFinalImages/morphingWingImageFour.svg'),
-                import('./Images/MorphingWingFinalImages/morphingWingImageFive.svg'),
-                import('./Images/MorphingWingFinalImages/morphingWingImageSix.svg'),
-            ]);
-
-            const keys = [
-                'CadImage',
-                'SimulationResultsOne',
-                'SimulationResultsTwo',
-                'SimulationResultsThree',
-                'CompliantMechanismOne',
-                'CompliantMechanismTwo',
-                'CompliantMechanismThree',
-                'CompliantMechanismFour',
-                'CompliantMechanismFive',
-                'CompliantMechanismSix',
-                'CompliantMechanismSeven',
-                'CompliantMechanismEight',
-                'CompliantMechanismNine',
-                'FinalImageOne',
-                'FinalImageTwo',
-                'FinalImageThree',
-                'FinalImageFour',
-                'FinalImageFive',
-                'FinalImageSix',
-            ];
-
-            const loaded = keys.reduce((acc, key, index) => {
-                acc[key] = images[index].default;
-                return acc;
-            }, {});
-
-            setLoadedImages(loaded);
-        };
-
-        loadImages();
-    }, []);
-
-    const handleOpen = (image) => {
-        setCurrentImage(image);
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-        setCurrentImage(null);
-    };
-
-    // =========================================================================
-    // ============================== NAVIGATION ===============================
-    // =========================================================================
-    const problemStatementRef = useRef(null);
-    const aimRef = useRef(null);
-    const simulationResultsRef = useRef(null);
-    const compliantMechanismsRef = useRef(null);
-    const finalProductRef = useRef(null);
-    const finalProductVideoDemonstrationRef = useRef(null);
-
-    const [activeSection, setActiveSection] = useState(null);
-
-    const sectionRefs = [
-        { ref: problemStatementRef, id: "problemStatment" },
-        { ref: aimRef, id: "aim" },
-        { ref: simulationResultsRef, id: "simulationResults" },
-        { ref: compliantMechanismsRef, id: "compliantMechanism" },
-        { ref: finalProductRef, id: "finalProduct" },
-        { ref: finalProductVideoDemonstrationRef, id: "finalProductVideoDemonstration" },
-    ];
-
-    const handleScroll = () => {
-        sectionRefs.forEach(({ ref, id }) => {
-            const rect = ref.current.getBoundingClientRect();
-            if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
-                setActiveSection(id);
-            }
-        });
-    };
-
-    useEffect(() => {
-        // Add scroll event listener
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            // Cleanup listener on component unmount
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
-    const handleClick = (id) => {
-        setActiveSection(id);
-    };
-
-    const scrollToSection = (ref) => {
-        ref.current.scrollIntoView({ behavior: "smooth" });
-    };
-
-    const ryanKwokClickHandle = () => { window.open('https://www.linkedin.com/in/ryan-kwok-8549452a5/', '_blank') }; 
+    const lightbox = useLightbox();
+    const linkedinClick = () => window.open('https://www.linkedin.com/in/ryan-kwok-8549452a5/', '_blank');
 
     return (
-        <div className='morphing-aircraft-wing-container'>
-            {/* Contents */}
-            <div className='contents-container'>
-                <div className='contents-title'>Contents</div>
-                <div className='contents-items-container'>
-                    {sectionRefs.map(({ id, ref }) => (
-                        <div
-                            key={id}
-                            onClick={() => {
-                                scrollToSection(ref);
-                                handleClick(id);
-                            }}
-                            className={`content ${activeSection === id ? "active" : ""}`}
-                        >
-                            {id.replace(/([A-Z])/g, " $1")}
+        <CaseStudyLayout project={project}>
+            <CaseStudySection title="Team &amp; Role">
+                <p>
+                    My role: Primary CAD Designer, Primary Tester, Technical Recorder.
+                </p>
+                <p>
+                    Team: Sithula Gamage,{' '}
+                    <button type="button" className="case-study-inline-link" onClick={linkedinClick}>
+                        Ryan Kwok
+                    </button>
+                    , Felix Pham, Madeline Chang, Samantha Chan.
+                </p>
+            </CaseStudySection>
+
+            <CaseStudySection title="Problem">
+                <p>
+                    The aviation industry loses millions of dollars annually to poor fuel efficiency in aircraft, due
+                    to inefficient airfoil designs. Optimising airfoil performance is crucial for reducing fuel
+                    consumption and lowering emissions. Morphing wings - a superior aerodynamic alternative to
+                    traditional airfoils - are widely regarded as the way of the future.
+                </p>
+            </CaseStudySection>
+
+            <CaseStudySection title="Requirements">
+                <p>The morphing wing system needed to meet the following objectives set by our client:</p>
+                <ul>
+                    <li>Maximised lift-to-drag ratio for enhanced aerodynamic efficiency</li>
+                    <li>A wide morphing range, allowing for significant deformation in the vertical direction</li>
+                    <li>Minimised airflow separation to reduce stall occurrence, ensuring smoother flight</li>
+                    <li>Lightweight wing structure to improve overall efficiency and manoeuvrability</li>
+                    <li>An electronic control system to allow real-time adjustments based on the phase of flight</li>
+                </ul>
+            </CaseStudySection>
+
+            {images.cad && (
+                <CaseStudySection title="CAD Design">
+                    <div className="case-study-image-item">
+                        <img
+                            src={images.cad}
+                            alt="CAD model of the morphing wing"
+                            className="case-study-image"
+                            loading="lazy"
+                            onClick={() => lightbox.open(images.cad)}
+                        />
+                    </div>
+                </CaseStudySection>
+            )}
+
+            <CaseStudySection title="Simulation &amp; Analysis">
+                <p>
+                    Analysis of the NACA 2415 airfoil at a Reynolds number of 18,000 shows smooth pressure
+                    distribution and moderate lift at lower angles of attack (2° and 5°), with increasing airflow
+                    deflection and lift at higher angles (10°). Higher angles also increase drag and stall risk.
+                    Comparing multiple airfoils in XFLR5 confirmed the NACA 2415 as the most suitable choice.
+                </p>
+                <div className="case-study-image-grid">
+                    {SIMULATION_IMAGES.map(({ key, label }) => images[key] && (
+                        <img
+                            key={key}
+                            src={images[key]}
+                            alt={label}
+                            className="case-study-image"
+                            loading="lazy"
+                            onClick={() => lightbox.open(images[key])}
+                        />
+                    ))}
+                </div>
+            </CaseStudySection>
+
+            <CaseStudySection title="Compliant Mechanisms">
+                <p>
+                    We tested compliant mechanisms via additive manufacturing, 3D-printing candidates in PLA and
+                    TPU. TPU prints were highly flexible but unsuitable for the application, so we moved to PLA.
+                    The S-Model exhibited the largest deflection - a remarkable 180° - while other models were
+                    either too rigid or too flimsy for reliable long-term use. We selected the S-Model as the
+                    optimal compliant mechanism.
+                </p>
+                <div className="case-study-image-grid">
+                    {COMPLIANT_MECHANISMS.map(({ key, caption }) => images[key] && (
+                        <div key={key} className="case-study-image-item">
+                            <img
+                                src={images[key]}
+                                alt={caption}
+                                className="case-study-image"
+                                loading="lazy"
+                                onClick={() => lightbox.open(images[key])}
+                            />
+                            <span className="case-study-image-caption">{caption}</span>
                         </div>
                     ))}
                 </div>
-            </div>
+            </CaseStudySection>
 
-            <div className='morphing-aircraft-wing-title-container'>
-                <div className='morphing-aircraft-wing-title'>Morphing Aircraft Wing</div>
-                <div className="underline">
-                    <div className="divider-container">
-                        <Divider sx={dividerStyle} />
-                        <div className="small-circle" />
-                        <div className="circle" />
-                        <div className="small-circle" />
-                        <Divider sx={dividerStyle} />
-                    </div>
-                </div>
-            </div>
-
-            <div className='extra-information'>
-                <div className='my-role'>My Role: Primary CAD Designer –– Primary Tester –– Technical Recorder</div>
-                <div className='team'>Team: Sithula Gamage, <span className='member-click' onClick={ryanKwokClickHandle}>Ryan Kwok</span>, Felix Pham, Madeline Chang, Samantha Chan</div>
-                <div className='year'>September - December 2024</div>
-            </div>
-
-            {/* Dynamically Loaded CAD Image */}
-            {loadedImages.CadImage && (
-                <img 
-                    src={loadedImages.CadImage} 
-                    alt="CAD of Wing" 
-                    className='cad-image'
-                    loading='lazy'
-                    onClick={() => handleOpen(loadedImages.CadImage)} 
-                />
-            )}
-
-            <div className='morphing-labels-container'>
-                <Chip style={morphingChipStyle} className='moprhing-labels' label="3D Printing" />
-                <Chip style={morphingChipStyle} className='moprhing-labels' label="Solidworks + OnShape CAD Design" />
-                <Chip style={morphingChipStyle} className='moprhing-labels' label="Innovation" />
-                <Chip style={morphingChipStyle} className='moprhing-labels' label="Prototyping" />
-            </div>
-
-            <div className='main-information-container'>
-                <div ref={problemStatementRef} id='problemStatment' className={`content-container ${activeSection === "problemStatment" ? "active" : ""}`}>
-                    <div className='content-header-title'>Problem Statement</div>
-                    <div className='content-information'>
-                        The aviation industry loses millions of dollars annually to poor fuel efficiency in aircrafts, due to inefficient airfoil designs. Optimising airfoil performance is crucial for reducing fuel consumption and lowering emissions. The current market understands that through extensive research, morphing wings are the way of the future; a superior alternative to the traditional airfoils aerodynamically.
-                    </div>
+            <CaseStudySection title="Results">
+                <div className="case-study-image-grid">
+                    {FINAL_IMAGES.map((key, index) => images[key] && (
+                        <img
+                            key={key}
+                            src={images[key]}
+                            alt={`Final wing prototype ${index + 1}`}
+                            className="case-study-image"
+                            loading="lazy"
+                            onClick={() => lightbox.open(images[key])}
+                        />
+                    ))}
                 </div>
 
-                {/* Aim */}
-                <div ref={aimRef} id='aim' className='content-container aim'>
-                    <div className='content-header-title'>Aim</div>
-                    <div className='content-information'>
-                        <span>The aim of this project is to create a morphing wing system which adheres to the following objectives set out by our client:</span>
-                        <li className='bullet-point'>Maximized lift-to-drag ratio for enhanced aerodynamic efficiency</li>
-                        <li className='bullet-point'>A wide morphing range, allowing for significant deformation in the vertical direction</li>
-                        <li className='bullet-point'>Minimized airflow separation to reduce stall occurrence, ensuring smoother flight</li>
-                        <li className='bullet-point'>Lightweight wing structure to improve the overall efficiency and manoeuvrability</li>
-                        <li className='bullet-point'>An electronic control system to allow for real-time adjustments based on the phase of flight</li>
-                    </div>
-                </div>
+                {images.finalSix && (
+                    <img
+                        src={images.finalSix}
+                        alt="Final wing prototype 5"
+                        className="case-study-image"
+                        loading="lazy"
+                        onClick={() => lightbox.open(images.finalSix)}
+                    />
+                )}
 
-                {/* Dynamically Loaded Simulation Results */}
-                <div ref={simulationResultsRef} id='simulationResults' className={`content-container ${activeSection === "simulationResults" ? "active" : ""}`}>
-                    <div className='content-header-title'>Simulation Results</div>
-                    <div className='simulation-results-images-container'>
-                        {['SimulationResultsOne', 'SimulationResultsTwo', 'SimulationResultsThree'].map((key, index) => (
-                            loadedImages[key] && (
-                                <img 
-                                    key={index}
-                                    src={loadedImages[key]} 
-                                    alt={`Simulation Results ${index + 1}`} 
-                                    className='simulation-results-image'
-                                    loading='lazy'
-                                    onClick={() => handleOpen(loadedImages[key])}
-                                />
-                            )
-                        ))}
-                    </div>
+                <video
+                    src={MorphingWingVideo}
+                    controls
+                    className="case-study-video"
+                    poster={VideoThumbnail}
+                    aria-label="Final product video demonstration"
+                >
+                    <track kind="captions" />
+                </video>
+            </CaseStudySection>
 
-                    {/* Description */}
-                    <div className='content-information'>
-                        The analysis of the NACA 2415 airfoil at a Reynolds Number of 18,000 shows smooth pressure distribution and moderate lift at lower angles of attack (2° and 5°), with increasing airflow deflection and lift at higher angles (10°). However, higher angles also result in increased drag and a greater risk of stall. Comparing multiple airfoils in XFLR5 confirmed that the NACA 2415 was the most suitable choice.
-                    </div>
-                </div>
-
-                {/* Compliant Mechanism */}
-                <div ref={compliantMechanismsRef} id='compliantMechanism' className={`content-container ${activeSection === "compliantMechanism" ? "active" : ""}`}>
-                    <div className='content-header-title'>Compliant Mechanisms</div>
-                    <div className='compliant-mechanism-images-container'>
-                        {[
-                            // { key: 'CompliantMechanismOne', caption: 'Cascading Model' },
-                            { key: 'CompliantMechanismTwo', caption: 'Helical Model - Long Wavelength' },
-                            { key: 'CompliantMechanismThree', caption: 'Helical Model - Short Wavelength' },
-                            { key: 'CompliantMechanismFour', caption: 'Flanged S-Model' },
-                            { key: 'CompliantMechanismFive', caption: 'Slanted S-Model' },
-                            { key: 'CompliantMechanismSix', caption: 'Large V-Model' },
-                            { key: 'CompliantMechanismSeven', caption: 'Helical V-Model' },
-                            { key: 'CompliantMechanismEight', caption: 'S-Model' },
-                            { key: 'CompliantMechanismNine', caption: 'Fishbone Model' },
-                        ].map(({ key, caption }, index) => (
-                            loadedImages[key] && (
-                                <div key={index} className='compliant-mechanism-item'>
-                                    <img 
-                                        src={loadedImages[key]} 
-                                        alt={caption} 
-                                        className='compliant-mechanism-image'
-                                        loading='lazy'
-                                        onClick={() => handleOpen(loadedImages[key])}
-                                    />
-                                    <div className='compliant-mechanism-caption'>{caption}</div>
-                                </div>
-                            )
-                        ))}
-                    </div>
-
-                    {/* Description */}
-                    <div className='content-information'>
-                        To test these compliant mechanisms, we employed additive manufacturing processes, specifically 3D printing. PLA and TPU materials were used to fabricate the mechanisms. As anticipated, the TPU prints were highly flexible; however, we determined that they were unsuitable for the intended application. Consequently, we opted for PLA prints instead.
-
-                        Surprisingly, the S-Model exhibited the largest deflection, achieving a remarkable 180°. In contrast, the other models were either too rigid, failing to provide adequate deflection, or overly flimsy, raising concerns about fatigue and long-term durability. Based on these results, we selected the S-Model Compliant Mechanism as the optimal choice.
-                    </div>
-                </div>
-
-
-                {/* Final Product */}
-                <div ref={finalProductRef} id='finalProduct' className={`content-container ${activeSection === "finalProduct" ? "active" : ""}`}>
-                    <div className='content-header-title'>Final Product</div>
-                    <div className='final-results-images-container'>
-                        {['FinalImageOne', 'FinalImageTwo', 'FinalImageThree', 'FinalImageFour', 'FinalImageFive', 'FinalImageSix'].map((key, index) => (
-                            loadedImages[key] && (
-                                <img 
-                                    key={index}
-                                    src={loadedImages[key]} 
-                                    alt={`Final Product ${index + 1}`} 
-                                    className={`final-results-image ${index === 5 ? 'bottom' : ''}`}
-                                    loading='lazy'
-                                    onClick={() => handleOpen(loadedImages[key])}
-                                />
-                            )
-                        ))}
-                    </div>
-                </div>
-
-                {/* Video */}
-                <div ref={finalProductVideoDemonstrationRef} id='finalProductVideoDemonstration' className={`content-container ${activeSection === "finalProductVideoDemonstration" ? "active" : ""}`}>
-                    <div className='content-header-title'>Final Product Video Demonstration</div>
-                    <div className='video-container'>
-                        <video src={MorphingWingVideo} controls className='video' loading='lazy' poster={VideoThumbnail} />
-                    </div>
-                </div>
-            </div>
-
-            {/* Backdrop */}
-            <Backdrop
-                sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1 })}
-                open={open}
-                onClick={handleClose}
-            >
-                {currentImage && <img src={currentImage} alt="Expanded View" style={{ width: '80%', maxHeight: '90%' }} />}
-            </Backdrop>
-        </div>
+            <Lightbox image={lightbox.image} onClose={lightbox.close} />
+        </CaseStudyLayout>
     );
 };
 

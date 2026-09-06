@@ -1,0 +1,26 @@
+/* Shared background art for a project, keyed by slug - reused by the
+   homepage ProjectCard thumbnail and the case-study hero banner so both
+   surfaces show the same image. */
+.project-media--morphing-aircraft-wing {
+    background-image: url(./Work/WorkPreviewImages/MorphingAircraftWingPreviewImage.svg);
+}
+
+.project-media--tinkering {
+    background-image: url(./Work/WorkPreviewImages/TinkeringPreviewImage.svg);
+}
+
+.project-media--transcutaneous-data-transfer.project-media--transcutaneous-data-transfer {
+    background-image: url(./WorkBlocks/TranscutaneousDataTransfer/Images/External/ExternalIsometric.png);
+    background-color: #0b0e14;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.project-media--personal-website {
+    background-image: url(./Work/WorkPreviewImages/WebsitePreviewImage.svg);
+    background-color: #ffffff;
+    background-size: 46%;
+    background-position: center;
+    background-repeat: no-repeat;
+}

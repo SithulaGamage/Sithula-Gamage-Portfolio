@@ -1,0 +1,367 @@
+/* ==========================================================================
+   ENGINEERING VALUE CARD
+   ========================================================================== */
+.eng-value {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.eng-value-label {
+    font-size: 0.75rem;
+    color: var(--color-text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.eng-value-value {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.eng-value-badge {
+    align-self: flex-start;
+    margin-top: var(--space-1);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent);
+}
+
+/* ==========================================================================
+   PARAMETER STRIP - compact monospace label:value chips
+   ========================================================================== */
+.parameter-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.parameter-chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    font-size: 0.78rem;
+}
+
+.parameter-chip-label {
+    color: var(--color-text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 0.68rem;
+}
+
+.parameter-chip-value {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   GAIN SCALE
+   ========================================================================== */
+.gain-scale {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.gain-chip {
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.gain-chip--active {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* ==========================================================================
+   SIGNAL DIAGRAMS (TET link + generic signal flow)
+   ========================================================================== */
+.signal-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-image:
+        linear-gradient(90deg, color-mix(in srgb, var(--color-border) 60%, transparent) 1px, transparent 1px),
+        linear-gradient(color-mix(in srgb, var(--color-border) 60%, transparent) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: center;
+}
+
+.signal-diagram-side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.signal-diagram-side-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-faint);
+}
+
+.signal-diagram-row,
+.signal-flow-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.signal-diagram-step {
+    padding: 0.55rem 0.95rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+    box-shadow: var(--shadow-sm);
+}
+
+.signal-diagram-step--accent {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background-color: var(--color-accent-soft);
+}
+
+.signal-diagram-arrow {
+    color: var(--color-accent);
+    font-size: 1rem;
+    opacity: 0.75;
+}
+
+.signal-diagram-coupling {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    padding-block: var(--space-1);
+    color: var(--color-text-faint);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.signal-diagram-coupling-symbol {
+    font-size: 1.3rem;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+}
+
+.signal-flow {
+    padding: var(--space-4);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+@media (max-width: 700px) {
+    .signal-diagram-row,
+    .signal-flow-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .signal-diagram-arrow {
+        align-self: center;
+        transform: rotate(90deg);
+    }
+
+    .signal-diagram-step {
+        text-align: center;
+        white-space: normal;
+    }
+}
+
+/* ==========================================================================
+   HARDWARE CALLOUTS
+   ========================================================================== */
+.hardware-callout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-2);
+}
+
+.hardware-callout {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+}
+
+.hardware-callout-label {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--color-accent);
+}
+
+.hardware-callout-desc {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   PCB SHOWCASE
+   ========================================================================== */
+.pcb-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.pcb-showcase-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.pcb-showcase-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-accent);
+}
+
+.pcb-showcase-subheading {
+    color: var(--color-text-muted) !important;
+    margin: 0;
+}
+
+.pcb-showcase-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.pcb-showcase-hero-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    cursor: zoom-in;
+    background-color: var(--color-surface);
+}
+
+.pcb-showcase-hero {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-base);
+}
+
+.pcb-showcase-hero-wrap:hover .pcb-showcase-hero {
+    transform: scale(1.02);
+}
+
+.pcb-showcase-thumbs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-2);
+}
+
+.pcb-showcase-thumb {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    cursor: zoom-in;
+    background-color: var(--color-surface);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.pcb-showcase-thumb:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 800px) {
+    .pcb-showcase-hero-wrap {
+        aspect-ratio: 16 / 10;
+    }
+}
+
+/* ==========================================================================
+   STATUS LIST
+   ========================================================================== */
+.status-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+}
+
+.status-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.status-pill {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0.7rem;
+    border-radius: var(--radius-pill);
+}
+
+.status-pill--complete {
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent);
+}
+
+.status-pill--in-progress {
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+}
