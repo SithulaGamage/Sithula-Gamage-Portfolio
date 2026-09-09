@@ -3,11 +3,12 @@
     flex-direction: column;
     overflow: hidden;
     height: 100%;
+    border-radius: var(--radius-sm);
+    box-shadow: none;
 }
 
 .project-card:hover,
 .project-card:focus-visible {
-    box-shadow: var(--shadow-md);
     border-color: var(--color-accent);
     transform: translateY(-3px);
 }
@@ -18,6 +19,12 @@
     width: 100%;
     border-bottom: 1px solid var(--color-border);
     overflow: hidden;
+    filter: grayscale(0.5) contrast(1.02);
+    transition: filter var(--transition-base);
+}
+
+.project-card:hover .project-card-media {
+    filter: grayscale(0);
 }
 
 .project-card-media-image {
@@ -37,45 +44,6 @@
     aspect-ratio: 16 / 10;
 }
 
-.project-card-media-scrim {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(6, 8, 12, 0.82), rgba(6, 8, 12, 0) 60%);
-}
-
-.project-card-media-overlay {
-    position: absolute;
-    inset-inline: 0;
-    bottom: 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--space-2);
-    padding: var(--space-4) var(--space-5);
-}
-
-.project-card-title {
-    color: #ffffff;
-    font-size: 1.2rem;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.project-card--featured .project-card-title {
-    font-size: 1.6rem;
-}
-
-.project-card-arrow {
-    color: rgba(255, 255, 255, 0.85);
-    transition: transform var(--transition-fast), color var(--transition-fast);
-    flex-shrink: 0;
-    margin-bottom: 3px;
-}
-
-.project-card:hover .project-card-arrow {
-    color: #ffffff;
-    transform: translate(2px, -2px);
-}
-
 .project-card-body {
     display: flex;
     flex-direction: column;
@@ -84,9 +52,45 @@
     flex: 1;
 }
 
+.project-card-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2);
+}
+
+.project-card-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--color-text);
+    letter-spacing: -0.005em;
+}
+
+.project-card--featured .project-card-title {
+    font-size: 1.65rem;
+}
+
+.project-card-arrow {
+    color: var(--color-text-faint);
+    transition: transform var(--transition-fast), color var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.project-card:hover .project-card-arrow {
+    color: var(--color-accent);
+    transform: translate(2px, -2px);
+}
+
 .project-card-description {
     color: var(--color-text-muted);
     font-size: 0.95rem;
+    line-height: 1.5;
+    height: calc(1.5em * 3);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .project-card-tech {

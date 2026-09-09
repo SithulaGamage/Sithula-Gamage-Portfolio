@@ -3,16 +3,16 @@ import ProjectCard from '../../../Components/ProjectCard/ProjectCard';
 import { projects } from '../../../data/projects';
 import './ProjectsSection.css';
 
-const featuredProjects = projects.filter((project) => project.featured);
-const otherProjects = projects.filter((project) => !project.featured);
+const visibleProjects = projects.filter((project) => !project.hidden);
+const featuredProjects = visibleProjects.filter((project) => project.featured);
+const otherProjects = visibleProjects.filter((project) => !project.featured);
 
 export const ProjectsSection = () => {
     return (
         <section id="projects" className="section container">
             <SectionHeading
-                eyebrow="Selected work"
+                numeral="I"
                 title="Projects"
-                description="Engineering work spanning mechanical design, electronics, and software."
             />
 
             <div className="projects-featured-grid">

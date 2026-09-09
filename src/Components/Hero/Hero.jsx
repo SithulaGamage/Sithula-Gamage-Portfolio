@@ -1,52 +1,73 @@
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import { social } from '../../data/social';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { useTheme } from '../../hooks/useTheme';
+import { useDailyFact } from '../../hooks/useDailyFact';
 import './Hero.css';
 
-const FOCUS_AREAS = ['Mechanical', 'Electronics', 'Embedded Systems', 'Robotics', 'Software'];
+const TOC_LINKS = [
+    { id: 'projects', label: 'Projects', numeral: 'I' },
+    { id: 'experience', label: 'Experience', numeral: 'II' },
+    { id: 'contact', label: 'Contact', numeral: 'III' },
+];
 
 export const Hero = () => {
+    const [theme, toggleTheme] = useTheme();
+    const fact = useDailyFact();
+
+    const scrollToSection = (event, id) => {
+        event.preventDefault();
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.replaceState(null, '', `#${id}`);
+
+        const heading = target.querySelector('.section-title');
+        if (heading) {
+            heading.classList.remove('section-title--pulse');
+            void heading.offsetWidth;
+            heading.classList.add('section-title--pulse');
+        }
+    };
+
     return (
-        <section id="home" className="hero section">
-            <div className="hero-backdrop" aria-hidden="true">
-                <div className="hero-crosshair" />
-            </div>
-
-            <div className="container hero-inner">
-                <div className="hero-marker" aria-hidden="true" />
-
-                <span className="section-eyebrow">
-                    Robotics &amp; Mechatronics Engineering + Biomedical Engineering
-                </span>
-
+        <section id="home" className="hero">
+            <div className="hero-inner">
                 <h1 className="hero-title">Sithula Gamage</h1>
 
-                <ul className="hero-focus-areas" aria-label="Engineering disciplines">
-                    {FOCUS_AREAS.map((area, index) => (
-                        <li key={area}>
-                            {area}
-                            {index < FOCUS_AREAS.length - 1 && <span aria-hidden="true"> / </span>}
-                        </li>
+                <p className="hero-tagline">Robotics &amp; Mechatronics + Biomedical Engineering Student</p>
+                <p className="hero-affiliation">UNSW Sydney</p>
+
+                <nav className="hero-toc" aria-label="Page sections">
+                    {TOC_LINKS.map(({ id, label, numeral }) => (
+                        <a
+                            key={id}
+                            href={`#${id}`}
+                            className="hero-toc-row"
+                            onClick={(event) => scrollToSection(event, id)}
+                        >
+                            <span className="hero-toc-label">{label}</span>
+                            <span className="hero-toc-leader" aria-hidden="true" />
+                            <span className="hero-toc-numeral">{numeral}</span>
+                        </a>
                     ))}
-                </ul>
+                </nav>
 
-                <div className="hero-rule" aria-hidden="true" />
+                {fact && (
+                    <p className="hero-fact">
+                        <span className="hero-fact-label">Fact of the day</span>
+                        {fact}
+                    </p>
+                )}
 
-                <div className="hero-actions">
-                    <a href="#projects" className="btn btn-primary">View Projects</a>
-                    {/* <a href={social.resume} target="_blank" rel="noreferrer" className="btn btn-secondary">
-                        <DescriptionOutlinedIcon fontSize="small" /> Resume
-                    </a> */}
-                    <div className="hero-social-group">
-                        <a href={social.github} target="_blank" rel="noreferrer" aria-label="GitHub profile">
-                            <GitHubIcon fontSize="small" />
-                        </a>
-                        <a href={social.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile">
-                            <LinkedInIcon fontSize="small" />
-                        </a>
-                    </div>
-                </div>
+                <button
+                    type="button"
+                    className="hero-theme-toggle"
+                    onClick={toggleTheme}
+                    aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+                >
+                    {theme === 'dark' ? <LightModeIcon fontSize="small" /> : <DarkModeIcon fontSize="small" />}
+                </button>
             </div>
         </section>
     );

@@ -11,14 +11,14 @@ export function ProjectCard({ project, variant = 'secondary' }) {
         >
             <div className="project-card-media">
                 <div className={`project-card-media-image project-media--${project.cardImageClass}`} />
-                <div className="project-card-media-scrim" />
-                <div className="project-card-media-overlay">
-                    <h3 className="project-card-title">{project.title}</h3>
-                    <ArrowOutwardIcon className="project-card-arrow" fontSize="small" />
-                </div>
             </div>
 
             <div className="project-card-body">
+                <div className="project-card-heading">
+                    <h3 className="project-card-title">{project.title}</h3>
+                    <ArrowOutwardIcon className="project-card-arrow" fontSize="small" />
+                </div>
+
                 <p className="project-card-description">{project.oneLiner}</p>
 
                 <div className="tag-row">

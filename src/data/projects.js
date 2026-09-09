@@ -6,7 +6,7 @@ export const projects = [
         slug: 'transcutaneous-data-transfer',
         title: 'Transcutaneous Data Transfer',
         oneLiner:
-            'Engineering an electronics architecture that transmits data from implanted electronics to the outside world across the inductive link of a Transcutaneous Energy Transfer (TET) system - without a wired skin penetration.',
+            'Wireless transmission (transcutaneous) of data from implanted electronics without skin penetration (percutaenous).',
         areas: ['Electronics'],
         tech: ['Altium', 'CAN Bus', 'Analog Front-End'],
         year: '2026',
@@ -36,6 +36,7 @@ export const projects = [
         year: '2024 - 2025',
         dates: 'December 2024 - February 2025',
         featured: true,
+        hidden: true,
         cardImageClass: 'tinkering',
     },
 ];

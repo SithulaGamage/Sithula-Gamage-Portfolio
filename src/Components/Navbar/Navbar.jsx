@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useActiveSection } from '../../hooks/useActiveSection';
+import { useTheme } from '../../hooks/useTheme';
 import './Navbar.css';
 
 const NAV_LINKS = [
@@ -15,25 +16,15 @@ const NAV_LINKS = [
 
 const SECTION_IDS = NAV_LINKS.map((link) => link.id);
 
-function getInitialTheme() {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light' || saved === 'dark') return saved;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-
 export const Navbar = () => {
-    const [theme, setTheme] = useState(getInitialTheme);
+    const [theme, toggleTheme] = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isPastHero, setIsPastHero] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
     const onHomePage = location.pathname === '/';
     const activeId = useActiveSection(onHomePage ? SECTION_IDS : []);
-
-    useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-    }, [theme]);
 
     useEffect(() => {
         document.body.style.overflow = isMenuOpen ? 'hidden' : '';
@@ -49,7 +40,39 @@ export const Navbar = () => {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    const toggleTheme = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    useEffect(() => {
+        if (!onHomePage) {
+            setIsPastHero(true);
+            return;
+        }
+
+        const target = document.getElementById('projects');
+        if (!target) {
+            setIsPastHero(true);
+            return;
+        }
+
+        const getThreshold = () => {
+            const scrollMarginTop = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+            return target.getBoundingClientRect().top + window.scrollY - scrollMarginTop - 120;
+        };
+
+        let threshold = getThreshold();
+        const onScroll = () => setIsPastHero(window.scrollY >= threshold);
+        const onResize = () => {
+            threshold = getThreshold();
+            onScroll();
+        };
+
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onResize);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', onResize);
+        };
+    }, [onHomePage]);
+
     const closeMenu = () => setIsMenuOpen(false);
 
     const goToSection = (event, id) => {
@@ -57,8 +80,16 @@ export const Navbar = () => {
         closeMenu();
 
         if (onHomePage) {
-            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+            const target = document.getElementById(id);
+            target?.scrollIntoView({ behavior: 'smooth' });
             window.history.replaceState(null, '', `#${id}`);
+
+            const heading = target?.querySelector('.section-title');
+            if (heading) {
+                heading.classList.remove('section-title--pulse');
+                void heading.offsetWidth;
+                heading.classList.add('section-title--pulse');
+            }
         } else {
             navigate(`/#${id}`);
         }
@@ -75,7 +106,9 @@ export const Navbar = () => {
     };
 
     return (
-        <header className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
+        <header
+            className={`navbar ${isScrolled ? 'navbar--scrolled' : ''} ${onHomePage && !isPastHero ? 'navbar--hidden' : ''}`}
+        >
             <div className="navbar-inner container">
                 <Link to="/" className="navbar-brand" onClick={goHome}>
                     Sithula Gamage

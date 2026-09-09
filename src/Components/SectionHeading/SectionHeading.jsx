@@ -1,7 +1,7 @@
-export function SectionHeading({ eyebrow, title, description, align = 'left', as: Heading = 'h2' }) {
+export function SectionHeading({ numeral, title, description, align = 'center', as: Heading = 'h2' }) {
     return (
         <div className="section-heading" data-align={align}>
-            {eyebrow && <span className="section-eyebrow">{eyebrow}</span>}
+            {numeral && <span className="section-numeral">{numeral}</span>}
             <Heading className="section-title">{title}</Heading>
             {description && <p className="section-description">{description}</p>}
         </div>
