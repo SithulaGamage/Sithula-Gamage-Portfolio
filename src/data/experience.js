@@ -19,6 +19,13 @@ export const experience = [
         tech: ['ELEC2141', 'DESN1000', 'DESN2000'],
     },
     {
+        role: 'Electrical Team Member',
+        organisation: 'UNSW Bionic Hearts',
+        dates: 'Mar. 2026 - Present',
+        summary:
+            'Designing a Transcutaneous Energy Transfer (TET) system for wireless power and data delivery in a Total Artificial Heart, prototyping and testing TET subsystems to validate wireless power performance under realistic operating conditions.',
+    },
+    {
         role: 'Co-Founder',
         organisation: 'Project Beacon',
         dates: 'Nov. 2025 - Present',

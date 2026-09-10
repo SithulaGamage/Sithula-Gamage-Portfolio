@@ -26,7 +26,7 @@ export const ContactSection = () => {
     return (
         <section id="contact" className="section container contact-section">
             <SectionHeading
-                eyebrow="Get in touch"
+                numeral="III"
                 title="Contact"
                 description="Open to internships, research roles, and engineering collaborations."
             />

@@ -1,174 +1,128 @@
 .hero {
-    position: relative;
-    padding-block: var(--space-7) var(--space-5);
-    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-6) var(--space-4);
 }
 
-/* ==========================================================================
-   BACKDROP - barely-there technical texture, fills the space left by
-   removing the visual without becoming a visual itself.
-   ========================================================================== */
-.hero-backdrop {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
-    background-size: 28px 28px;
-    -webkit-mask-image: linear-gradient(to bottom, black, transparent 85%);
-    mask-image: linear-gradient(to bottom, black, transparent 85%);
-    opacity: 0.5;
-}
-
-.hero-crosshair {
-    position: absolute;
-    top: 14%;
-    right: 6%;
-    width: 22px;
-    height: 22px;
-    opacity: 0.35;
-}
-
-.hero-crosshair::before,
-.hero-crosshair::after {
-    content: '';
-    position: absolute;
-    background-color: var(--color-text-faint);
-}
-
-.hero-crosshair::before {
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    transform: translateY(-50%);
-}
-
-.hero-crosshair::after {
-    left: 50%;
-    top: 0;
-    width: 1px;
-    height: 100%;
-    transform: translateX(-50%);
-}
-
-/* ==========================================================================
-   CONTENT
-   ========================================================================== */
 .hero-inner {
-    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-3);
-}
-
-.hero-marker {
-    width: 32px;
-    height: 3px;
-    border-radius: 2px;
-    background-color: var(--color-accent);
-    margin-bottom: var(--space-1);
+    align-items: center;
+    gap: var(--space-4);
+    width: 100%;
+    max-width: 760px;
 }
 
 .hero-title {
-    font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    max-width: 16ch;
-}
-
-.hero-description {
-    font-size: 1.15rem;
-    line-height: 1.5;
+    font-family: var(--font-display);
+    font-weight: 480;
+    font-size: clamp(1.9rem, 0.9rem + 5vw, 4.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
     color: var(--color-text);
-    max-width: 100%;
+    white-space: nowrap;
 }
 
-.hero-secondary-line {
-    font-size: 0.88rem;
-    color: var(--color-text-faint);
-    margin-top: calc(-1 * var(--space-1));
-}
-
-.hero-focus-areas {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 2px;
-    row-gap: var(--space-1);
-    font-family: var(--font-mono, var(--font-body));
-    font-weight: 500;
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+.hero-tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.55rem;
     color: var(--color-text-muted);
-    margin-top: var(--space-2);
-    max-width: 100%;
 }
 
-.hero-focus-areas li {
-    display: inline-flex;
+.hero-affiliation {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+    margin-bottom: var(--space-5);
 }
 
-.hero-focus-areas span {
-    color: var(--color-accent);
-    padding-inline: 8px;
-}
-
-.hero-rule {
-    width: 64px;
-    height: 1px;
-    background-color: var(--color-border);
-    margin-block: var(--space-4) var(--space-1);
-}
-
-.hero-actions {
+.hero-toc {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
+    width: 100%;
     gap: var(--space-3);
 }
 
-.hero-social-group {
+.hero-toc-row {
     display: flex;
-    align-items: stretch;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-pill);
-    overflow: hidden;
+    align-items: baseline;
+    gap: var(--space-3);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.3rem;
+    letter-spacing: 0.01em;
+    color: var(--color-text);
+    padding-block: 4px;
+    transition: color var(--transition-fast);
 }
 
-.hero-social-group a {
+.hero-toc-leader {
+    flex: 1;
+    height: 0;
+    border-bottom: 2px dotted var(--color-text-faint);
+    transform: translateY(-5px);
+}
+
+.hero-toc-numeral {
+    font-family: Georgia, serif;
+    font-weight: 600;
+}
+
+.hero-toc-row:hover {
+    color: var(--color-accent);
+}
+
+.hero-toc-row:hover .hero-toc-leader {
+    border-color: var(--color-accent);
+}
+
+.hero-fact {
+    max-width: 46ch;
+    margin-top: var(--space-2);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+}
+
+.hero-fact-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+    margin-bottom: 4px;
+}
+
+.hero-theme-toggle {
+    margin-top: var(--space-6);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.6rem 0.85rem;
-    color: var(--color-text-muted);
-    transition: color var(--transition-fast), background-color var(--transition-fast);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background-color: transparent;
+    color: var(--color-text-faint);
+    cursor: pointer;
+    transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
 
-.hero-social-group a:first-child {
-    border-right: 1px solid var(--color-border);
-}
-
-.hero-social-group a:hover {
+.hero-theme-toggle:hover {
     color: var(--color-accent);
-    background-color: var(--color-accent-soft);
-}
-
-/* ============================== MEDIA QUERIES ============================= */
-@media (max-width: 640px) {
-    .hero {
-        padding-block: var(--space-6) var(--space-4);
-    }
-
-    .hero-title {
-        max-width: none;
-    }
-
-    .hero-description {
-        max-width: none;
-    }
-
-    .hero-crosshair {
-        display: none;
-    }
+    border-color: var(--color-accent);
+    transform: rotate(20deg);
 }

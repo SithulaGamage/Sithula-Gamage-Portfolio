@@ -6,7 +6,7 @@ import './ExperienceSection.css';
 export const ExperienceSection = () => {
     return (
         <section id="experience" className="section container">
-            <SectionHeading eyebrow="Career" title="Experience" />
+            <SectionHeading numeral="II" title="Experience" />
 
             {experience.length > 0 ? (
                 <div className="experience-list">
