@@ -15,6 +15,7 @@ const NAV_LINKS = [
 ];
 
 const SECTION_IDS = NAV_LINKS.map((link) => link.id);
+const NAVBAR_OFFSET = 96;
 
 export const Navbar = () => {
     const [theme, toggleTheme] = useTheme();
@@ -41,21 +42,13 @@ export const Navbar = () => {
     }, []);
 
     useEffect(() => {
-        if (!onHomePage) {
+        const hero = document.querySelector('.page-hero');
+        if (!hero) {
             setIsPastHero(true);
             return;
         }
 
-        const target = document.getElementById('projects');
-        if (!target) {
-            setIsPastHero(true);
-            return;
-        }
-
-        const getThreshold = () => {
-            const scrollMarginTop = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
-            return target.getBoundingClientRect().top + window.scrollY - scrollMarginTop - 120;
-        };
+        const getThreshold = () => hero.getBoundingClientRect().bottom + window.scrollY - 120;
 
         let threshold = getThreshold();
         const onScroll = () => setIsPastHero(window.scrollY >= threshold);
@@ -71,7 +64,7 @@ export const Navbar = () => {
             window.removeEventListener('scroll', onScroll);
             window.removeEventListener('resize', onResize);
         };
-    }, [onHomePage]);
+    }, [location.pathname]);
 
     const closeMenu = () => setIsMenuOpen(false);
 
@@ -81,7 +74,10 @@ export const Navbar = () => {
 
         if (onHomePage) {
             const target = document.getElementById(id);
-            target?.scrollIntoView({ behavior: 'smooth' });
+            if (target) {
+                const top = target.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
             window.history.replaceState(null, '', `#${id}`);
 
             const heading = target?.querySelector('.section-title');
@@ -107,7 +103,7 @@ export const Navbar = () => {
 
     return (
         <header
-            className={`navbar ${isScrolled ? 'navbar--scrolled' : ''} ${onHomePage && !isPastHero ? 'navbar--hidden' : ''}`}
+            className={`navbar ${isScrolled ? 'navbar--scrolled' : ''} ${!isPastHero ? 'navbar--hidden' : ''}`}
         >
             <div className="navbar-inner container">
                 <Link to="/" className="navbar-brand" onClick={goHome}>

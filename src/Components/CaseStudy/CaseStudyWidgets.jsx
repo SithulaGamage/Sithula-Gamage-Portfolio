@@ -100,11 +100,13 @@ export function HardwareCallouts({ items }) {
 export function PCBShowcase({ eyebrow, title, subheading, hero, thumbs = [], callouts = [] }) {
     return (
         <div className="pcb-showcase">
-            <div className="pcb-showcase-header">
-                {eyebrow && <span className="pcb-showcase-eyebrow">{eyebrow}</span>}
-                <h3 className="case-study-section-title">{title}</h3>
-                {subheading && <p className="pcb-showcase-subheading">{subheading}</p>}
-            </div>
+            {(eyebrow || title || subheading) && (
+                <div className="pcb-showcase-header">
+                    {eyebrow && <span className="pcb-showcase-eyebrow">{eyebrow}</span>}
+                    {title && <h3 className="case-study-subheading">{title}</h3>}
+                    {subheading && <p className="pcb-showcase-subheading">{subheading}</p>}
+                </div>
+            )}
 
             <div className="pcb-showcase-grid">
                 <div className="pcb-showcase-hero-wrap" onClick={hero.onClick}>
@@ -147,6 +149,14 @@ export function StatusList({ items }) {
     );
 }
 
+export function ImagePlaceholder({ label }) {
+    return (
+        <div className="case-study-image-placeholder">
+            <span>{label ?? 'Image coming soon'}</span>
+        </div>
+    );
+}
+
 export default {
     EngineeringValue,
     ParameterStrip,
@@ -156,4 +166,5 @@ export default {
     HardwareCallouts,
     PCBShowcase,
     StatusList,
+    ImagePlaceholder,
 };

@@ -10,6 +10,8 @@ const TOC_LINKS = [
     { id: 'contact', label: 'Contact', numeral: 'III' },
 ];
 
+const NAVBAR_OFFSET = 96;
+
 export const Hero = () => {
     const [theme, toggleTheme] = useTheme();
     const fact = useDailyFact();
@@ -19,7 +21,8 @@ export const Hero = () => {
         const target = document.getElementById(id);
         if (!target) return;
 
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const top = target.getBoundingClientRect().top + window.scrollY - NAVBAR_OFFSET;
+        window.scrollTo({ top, behavior: 'smooth' });
         window.history.replaceState(null, '', `#${id}`);
 
         const heading = target.querySelector('.section-title');
@@ -31,7 +34,7 @@ export const Hero = () => {
     };
 
     return (
-        <section id="home" className="hero">
+        <section id="home" className="hero page-hero">
             <div className="hero-inner">
                 <h1 className="hero-title">Sithula Gamage</h1>
 
