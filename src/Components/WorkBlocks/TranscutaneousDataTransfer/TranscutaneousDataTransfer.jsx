@@ -99,7 +99,6 @@ export const TranscutaneousDataTransfer = () => {
                         Blue is the external coil&apos;s voltage, green is the internal coil&apos;s voltage, and red
                         is the data input.
                     </li>
-                    <li>There may also have been some incorrect grounding.</li>
                 </ul>
 
                 <h3 className="case-study-subheading">Final Iteration</h3>
