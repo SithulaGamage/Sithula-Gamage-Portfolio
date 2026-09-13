@@ -18,6 +18,10 @@ export const TranscutaneousDataTransfer = () => {
         internalTopRender: () => import('./Images/Internal/InternalTopRender.png'),
         internalTopSilkscreen: () => import('./Images/Internal/InternalTopSilkscreen.png'),
         internalBottomCopper: () => import('./Images/Internal/InternalBottomCopper.png'),
+        ltInitialSchematic: () => import('../../../assets/ltspice/lt1.png'),
+        ltInitialGraph: () => import('../../../assets/ltspice/lt1_graph.png'),
+        ltFinalSchematic: () => import('../../../assets/ltspice/ltfinal.png'),
+        ltFinalGraph: () => import('../../../assets/ltspice/ltfinal_graph.png'),
     });
 
     const lightbox = useLightbox();
@@ -65,9 +69,83 @@ export const TranscutaneousDataTransfer = () => {
                 />
             </CaseStudySection> */}
 
+            <CaseStudySection title="LTspice Simulation">
+                <h3 className="case-study-subheading">Initial Iteration</h3>
+                {images.ltInitialSchematic && (
+                    <img
+                        src={images.ltInitialSchematic}
+                        alt="LTspice schematic of the initial impedance reflection simulation"
+                        className="case-study-image"
+                        loading="lazy"
+                        onClick={() => lightbox.open(images.ltInitialSchematic)}
+                    />
+                )}
+                {images.ltInitialGraph && (
+                    <img
+                        src={images.ltInitialGraph}
+                        alt="LTspice waveform graph of the initial impedance reflection simulation"
+                        className="case-study-image"
+                        loading="lazy"
+                        onClick={() => lightbox.open(images.ltInitialGraph)}
+                    />
+                )}
+                <ul>
+                    <li>
+                        No real result: tried a constant 5 V data input, but no change in impedance was noticeable
+                        on the external side.
+                    </li>
+                    <li>The K factor between the coupled inductors was likely too optimistic / too high.</li>
+                    <li>
+                        Blue is the external coil&apos;s voltage, green is the internal coil&apos;s voltage, and red
+                        is the data input.
+                    </li>
+                </ul>
+
+                <h3 className="case-study-subheading">Final Iteration</h3>
+                {images.ltFinalSchematic && (
+                    <img
+                        src={images.ltFinalSchematic}
+                        alt="LTspice schematic of the final envelope-detection and ADC gain array simulation"
+                        className="case-study-image"
+                        loading="lazy"
+                        onClick={() => lightbox.open(images.ltFinalSchematic)}
+                    />
+                )}
+                {images.ltFinalGraph && (
+                    <img
+                        src={images.ltFinalGraph}
+                        alt="LTspice waveform graph showing the five ADC gain channels responding to the data signal"
+                        className="case-study-image"
+                        loading="lazy"
+                        onClick={() => lightbox.open(images.ltFinalGraph)}
+                    />
+                )}
+                <p>
+                    This iteration adds a proper front-end after the coupled coils: an LC tank and SCT switch feed a
+                    half-bridge rectifier with a smoothing capacitor, which extracts the envelope of the reflected
+                    signal. That envelope is buffered and protected, then passed through a logarithmic gain stage
+                    (a matched BJT pair) to compress its wide dynamic range, before a low-pass and high-pass filter
+                    stage and an output buffer clean it up.
+                </p>
+                <p>
+                    The buffered signal then fans out into five parallel gain stages - 5x, 2x, 1x, 0.5x, and 0.2x -
+                    each with its own op-amp, feedback resistor, and diode clamps for overvoltage protection, feeding
+                    five separate ADC channels. Since the received signal&apos;s amplitude varies a lot with coupling
+                    distance, having five gain options in parallel means at least one channel should land cleanly
+                    within the STM32 ADC&apos;s 0-3.3 V range without clipping or being too small to resolve, rather
+                    than needing a single gain stage to guess correctly. A charge pump (ICL7662/Si7661) generates the
+                    negative rail the op-amps need, alongside a 3.3 V reference for the array.
+                </p>
+                <p>
+                    The output graph shows this working: as the data switches high and low, all five ADC channels
+                    track the same underlying waveform, just scaled differently - the 5x channel (ADC1) saturates
+                    near the rails, while the 0.2x channel (ADC5) stays comfortably within range, showing how the
+                    array covers a wide spread of input signal strengths.
+                </p>
+            </CaseStudySection>
+
             <CaseStudySection title="Prototyping &amp; Validation">
-                <h3 className="case-study-section-title">Initial Breadboard Prototype</h3>
-                <p className="case-study-date">May 2026</p>
+                <h3 className="case-study-subheading">Initial Breadboard Prototype</h3>
                 <p>
                     I first built the LC circuit I&apos;d researched and simulated in LTspice on a breadboard, driving
                     the coupled coils with a high-frequency input to see whether a change on the secondary side would
@@ -78,8 +156,7 @@ export const TranscutaneousDataTransfer = () => {
                     the circuit responded to coupling, but load modulation itself wasn&apos;t yet observable.
                 </p>
 
-                <h3 className="case-study-section-title">Observing Load Modulation</h3>
-                <p className="case-study-date">May 2026</p>
+                <h3 className="case-study-subheading">Observing Load Modulation</h3>
                 <p>
                     Swapping in picofarad-range capacitors raised the tank&apos;s resonant frequency, and this time
                     switching 5 V onto the secondary MOSFET produced a visible change in primary-side amplitude - the
@@ -90,8 +167,7 @@ export const TranscutaneousDataTransfer = () => {
                     through tissue rather than air.
                 </p>
 
-                <h3 className="case-study-section-title">STM32-Driven Modulation</h3>
-                <p className="case-study-date">June 2026</p>
+                <h3 className="case-study-subheading">STM32-Driven Modulation</h3>
                 <p>
                     I then had an STM32 generate a data sequence and switch the secondary MOSFET directly, which
                     produced clearly distinguishable high/low amplitude states on the primary waveform matching the
@@ -107,9 +183,6 @@ export const TranscutaneousDataTransfer = () => {
             <CaseStudySection title="External Board">
                 {images.externalIsometric && (
                     <PCBShowcase
-                        eyebrow="Primary Side"
-                        title="External Board"
-                        subheading="Detection & signal conditioning"
                         hero={{
                             src: images.externalIsometric,
                             alt: '3D render of the external data transfer PCB',
@@ -127,10 +200,7 @@ export const TranscutaneousDataTransfer = () => {
 
             <CaseStudySection title="Internal Board">
                 {images.internalIsometric && (
-                    <PCBShowcase
-                        eyebrow="Secondary Side"
-                        title="Internal Board"
-                        subheading="Load modulation"
+                    <PCBShowcase 
                         hero={{
                             src: images.internalIsometric,
                             alt: '3D render of the internal data transfer PCB',

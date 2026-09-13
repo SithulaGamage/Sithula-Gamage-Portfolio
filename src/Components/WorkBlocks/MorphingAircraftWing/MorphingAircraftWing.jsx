@@ -50,42 +50,30 @@ export const MorphingAircraftWing = () => {
     });
 
     const lightbox = useLightbox();
-    const linkedinClick = () => window.open('https://www.linkedin.com/in/ryan-kwok-8549452a5/', '_blank');
 
     return (
         <CaseStudyLayout project={project}>
-            <CaseStudySection title="Team &amp; Role">
-                <p>
-                    My role: Primary CAD Designer, Primary Tester, Technical Recorder.
-                </p>
-                <p>
-                    Team: Sithula Gamage,{' '}
-                    <button type="button" className="case-study-inline-link" onClick={linkedinClick}>
-                        Ryan Kwok
-                    </button>
-                    , Felix Pham, Madeline Chang, Samantha Chan.
-                </p>
-            </CaseStudySection>
+            <div className="case-study-split-row">
+                <CaseStudySection title="Problem">
+                    <p>
+                        The aviation industry loses millions of dollars annually to poor fuel efficiency in aircraft,
+                        due to inefficient airfoil designs. Optimising airfoil performance is crucial for reducing
+                        fuel consumption and lowering emissions. Morphing wings - a superior aerodynamic alternative
+                        to traditional airfoils - are widely regarded as the way of the future.
+                    </p>
+                </CaseStudySection>
 
-            <CaseStudySection title="Problem">
-                <p>
-                    The aviation industry loses millions of dollars annually to poor fuel efficiency in aircraft, due
-                    to inefficient airfoil designs. Optimising airfoil performance is crucial for reducing fuel
-                    consumption and lowering emissions. Morphing wings - a superior aerodynamic alternative to
-                    traditional airfoils - are widely regarded as the way of the future.
-                </p>
-            </CaseStudySection>
-
-            <CaseStudySection title="Requirements">
-                <p>The morphing wing system needed to meet the following objectives set by our client:</p>
-                <ul>
-                    <li>Maximised lift-to-drag ratio for enhanced aerodynamic efficiency</li>
-                    <li>A wide morphing range, allowing for significant deformation in the vertical direction</li>
-                    <li>Minimised airflow separation to reduce stall occurrence, ensuring smoother flight</li>
-                    <li>Lightweight wing structure to improve overall efficiency and manoeuvrability</li>
-                    <li>An electronic control system to allow real-time adjustments based on the phase of flight</li>
-                </ul>
-            </CaseStudySection>
+                <CaseStudySection title="Requirements">
+                    <p>The morphing wing system needed to meet the following objectives set by our client:</p>
+                    <ul>
+                        <li>Maximised lift-to-drag ratio for enhanced aerodynamic efficiency</li>
+                        <li>A wide morphing range, allowing for significant deformation in the vertical direction</li>
+                        <li>Minimised airflow separation to reduce stall occurrence, ensuring smoother flight</li>
+                        <li>Lightweight wing structure to improve overall efficiency and manoeuvrability</li>
+                        <li>An electronic control system to allow real-time adjustments based on the phase of flight</li>
+                    </ul>
+                </CaseStudySection>
+            </div>
 
             {images.cad && (
                 <CaseStudySection title="CAD Design">

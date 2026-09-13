@@ -10,10 +10,10 @@
     --color-text: #14151a;
     --color-text-muted: #5b5d66;
     --color-text-faint: #8b8d96;
-    --color-accent: #14151a;
-    --color-accent-strong: #14151a;
-    --color-accent-soft: #e2e5ea;
-    --color-focus-ring: #14151a;
+    --color-accent: #a1584c;
+    --color-accent-strong: #8a4a3f;
+    --color-accent-soft: rgba(161, 88, 76, 0.12);
+    --color-focus-ring: #a1584c;
     --color-on-accent: #ffffff;
     --color-danger: #c4453c;
 
@@ -56,10 +56,10 @@
     --color-text: #f3f4f6;
     --color-text-muted: #a9abb5;
     --color-text-faint: #74767f;
-    --color-accent: #f3f4f6;
-    --color-accent-strong: #ffffff;
-    --color-accent-soft: rgba(255, 255, 255, 0.1);
-    --color-focus-ring: #f3f4f6;
+    --color-accent: #c9776a;
+    --color-accent-strong: #d98c7e;
+    --color-accent-soft: rgba(201, 119, 106, 0.22);
+    --color-focus-ring: #c9776a;
     --color-on-accent: #14151a;
     --color-danger: #e2665d;
 
@@ -83,23 +83,6 @@ html {
     background-color: var(--color-bg);
     overflow-x: hidden;
     scroll-padding-top: 96px;
-    background-image:
-        radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.07) 1px, transparent 0),
-        radial-gradient(circle at 11px 7px, rgba(0, 0, 0, 0.05) 1px, transparent 0),
-        radial-gradient(circle at 5px 15px, rgba(0, 0, 0, 0.045) 1px, transparent 0),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
-        linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px);
-    background-size: 5px 5px, 19px 17px, 23px 21px, 32px 32px, 32px 32px;
-    background-attachment: fixed;
-}
-
-html[data-theme="dark"] {
-    background-image:
-        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.065) 1px, transparent 0),
-        radial-gradient(circle at 11px 7px, rgba(255, 255, 255, 0.045) 1px, transparent 0),
-        radial-gradient(circle at 5px 15px, rgba(255, 255, 255, 0.04) 1px, transparent 0),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -336,6 +319,13 @@ ul {
     background-color: transparent;
     border-color: var(--color-border);
     color: var(--color-text-muted);
+}
+
+.tag-accent {
+    background-color: var(--color-accent-soft);
+    border-color: transparent;
+    color: var(--color-accent);
+    font-weight: 600;
 }
 
 .card {

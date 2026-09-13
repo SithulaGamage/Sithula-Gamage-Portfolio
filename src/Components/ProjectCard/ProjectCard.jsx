@@ -23,7 +23,7 @@ export function ProjectCard({ project, variant = 'secondary' }) {
 
                 <div className="tag-row">
                     {project.areas.map((area) => (
-                        <span key={area} className="tag">{area}</span>
+                        <span key={area} className="tag tag-accent">{area}</span>
                     ))}
                 </div>
 

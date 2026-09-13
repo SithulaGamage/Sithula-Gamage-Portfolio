@@ -4,61 +4,43 @@
     gap: var(--space-1);
     font-size: 0.9rem;
     color: var(--color-text-muted);
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-3);
 }
 
 .case-study-back:hover {
     color: var(--color-accent);
 }
 
-.case-study-hero {
-    position: relative;
-    aspect-ratio: 16 / 8;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    background-color: var(--color-accent-soft);
-    background-size: cover;
-    background-position: center;
+.case-hero {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: clamp(72px, 16vh, 180px);
 }
 
-.case-study-hero-scrim {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(6, 8, 12, 0.85), rgba(6, 8, 12, 0) 65%);
+.case-hero .hero-inner {
+    margin-inline: auto;
 }
 
-.case-study-hero-content {
-    position: absolute;
-    inset-inline: 0;
-    bottom: 0;
-    padding: var(--space-6);
+.case-hero-title {
+    white-space: nowrap;
+    font-size: clamp(1.3rem, 0.6rem + 3.8vw, 3rem);
 }
 
-.case-study-hero-title {
-    color: #ffffff;
-    font-size: clamp(1.8rem, 1.3rem + 2.4vw, 3rem);
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+.case-hero-areas,
+.case-hero-tech {
+    justify-content: center;
 }
 
-.case-study-hero-subtitle {
-    color: rgba(255, 255, 255, 0.88);
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.9rem;
-    margin-top: var(--space-2);
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+.tag-tech {
+    background-color: transparent;
+    border-color: var(--color-border);
+    color: var(--color-text-faint);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.55rem;
 }
 
 .case-study-inner {
     max-width: var(--container-width);
-    padding-top: var(--space-6);
-}
-
-.case-study-summary {
-    font-size: 1.1rem;
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-4);
 }
 
 .case-study-body {
@@ -72,14 +54,61 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
+    scroll-margin-top: 84px;
 }
 
 .case-study-section-title {
-    font-size: 1.3rem;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.7rem, 1.4rem + 1.2vw, 2.2rem);
+    letter-spacing: -0.005em;
+    text-align: left;
+}
+
+.case-study-subheading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.15rem;
+    letter-spacing: -0.005em;
+    color: var(--color-text);
+}
+
+.case-study-split-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-6);
+}
+
+.case-study-split-row > .case-study-section {
+    padding-right: var(--space-6);
+}
+
+.case-study-split-row > .case-study-section + .case-study-section {
+    padding-right: 0;
+    padding-left: var(--space-6);
+    border-left: 1px solid var(--color-border);
+}
+
+@media (max-width: 720px) {
+    .case-study-split-row {
+        grid-template-columns: 1fr;
+    }
+
+    .case-study-split-row > .case-study-section {
+        padding-right: 0;
+    }
+
+    .case-study-split-row > .case-study-section + .case-study-section {
+        padding-left: 0;
+        padding-top: var(--space-6);
+        border-left: none;
+        border-top: 1px solid var(--color-border);
+    }
 }
 
 .case-study-section p {
     color: var(--color-text-muted);
+    text-align: justify;
 }
 
 .case-study-section li {
@@ -152,11 +181,6 @@
     border: 1px solid var(--color-border);
 }
 
-@media (max-width: 600px) {
-    .case-study-hero {
-        aspect-ratio: 4 / 5;
-    }
-}
 
 /* ==========================================================================
    SPEC CARDS - small labelled stat cards (e.g. calculated design values)
