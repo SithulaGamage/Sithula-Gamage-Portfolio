@@ -201,7 +201,7 @@ export const TranscutaneousDataTransfer = () => {
 
             <CaseStudySection title="Internal Board">
                 {images.internalIsometric && (
-                    <PCBShowcase
+                    <PCBShowcase 
                         hero={{
                             src: images.internalIsometric,
                             alt: '3D render of the internal data transfer PCB',
