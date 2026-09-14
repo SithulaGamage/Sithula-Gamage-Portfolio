@@ -39,6 +39,18 @@ export const projects = [
         hidden: true,
         cardImageClass: 'tinkering',
     },
+    {
+        slug: 'micromouse',
+        title: 'Micromouse',
+        oneLiner: '',
+        areas: [],
+        tech: [],
+        year: '',
+        dates: '',
+        featured: true,
+        hidden: true,
+        cardImageClass: 'micromouse',
+    },
 ];
 
 export function getProjectBySlug(slug) {

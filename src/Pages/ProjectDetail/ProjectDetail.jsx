@@ -1,4 +1,5 @@
 import { Navigate, useParams } from 'react-router-dom';
+import Micromouse from '../../Components/WorkBlocks/Micromouse/Micromouse';
 import MorphingAircraftWing from '../../Components/WorkBlocks/MorphingAircraftWing/MorphingAircraftWing';
 import PersonalWebsite from '../../Components/WorkBlocks/PersonalWebsite/PersonalWebsite';
 import Tinkering from '../../Components/WorkBlocks/Tinkering/Tinkering';
@@ -6,6 +7,7 @@ import TranscutaneousDataTransfer from '../../Components/WorkBlocks/Transcutaneo
 import { getProjectBySlug } from '../../data/projects';
 
 const CASE_STUDIES = {
+    micromouse: Micromouse,
     'morphing-aircraft-wing': MorphingAircraftWing,
     'personal-website': PersonalWebsite,
     tinkering: Tinkering,
