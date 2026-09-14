@@ -1,4 +1,11 @@
+@property --card-glow-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
 .project-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -9,8 +16,46 @@
 
 .project-card:hover,
 .project-card:focus-visible {
-    border-color: var(--color-accent);
     transform: translateY(-3px);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(
+        from var(--card-glow-angle),
+        transparent 0deg,
+        var(--color-glow) 15deg,
+        transparent 60deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    animation: card-glow-spin 3.5s linear infinite;
+    transition: opacity var(--transition-base);
+    pointer-events: none;
+}
+
+.project-card:hover::before,
+.project-card:focus-visible::before {
+    opacity: 1;
+}
+
+@keyframes card-glow-spin {
+    to {
+        --card-glow-angle: 360deg;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-card::before {
+        animation: none;
+    }
 }
 
 .project-card-media {
@@ -78,7 +123,7 @@
 }
 
 .project-card:hover .project-card-arrow {
-    color: var(--color-accent);
+    color: var(--color-text);
     transform: translate(2px, -2px);
 }
 

@@ -106,8 +106,8 @@ export const Navbar = () => {
             className={`navbar ${isScrolled ? 'navbar--scrolled' : ''} ${!isPastHero ? 'navbar--hidden' : ''}`}
         >
             <div className="navbar-inner container">
-                <Link to="/" className="navbar-brand" onClick={goHome}>
-                    Sithula Gamage
+                <Link to="/" className="navbar-brand" onClick={goHome} aria-label="Sithula Gamage — home">
+                    S.G.
                 </Link>
 
                 <nav className="navbar-links" aria-label="Primary">
