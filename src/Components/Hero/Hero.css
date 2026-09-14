@@ -41,7 +41,24 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-text-faint);
+}
+
+.hero-contact-icons {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
     margin-bottom: var(--space-5);
+}
+
+.hero-contact-icons a {
+    display: inline-flex;
+    color: var(--color-text-faint);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.hero-contact-icons a:hover {
+    color: var(--color-accent);
+    transform: translateY(-2px);
 }
 
 .hero-toc {
@@ -72,7 +89,7 @@
 }
 
 .hero-toc-numeral {
-    font-family: Georgia, serif;
+    font-family: var(--font-display);
     font-weight: 600;
 }
 

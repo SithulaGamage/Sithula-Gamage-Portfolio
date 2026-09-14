@@ -101,6 +101,13 @@ export function CaseStudyLayout({ project, introMedia, children }) {
 
                 <div className="case-study-body">{children}</div>
             </div>
+
+            <footer className="case-study-footer">
+                <Link to="/#projects" className="case-study-back">
+                    <ArrowBackIcon fontSize="small" /> Back to projects
+                </Link>
+                <p className="case-study-footer-copy">© {new Date().getFullYear()} Sithula Gamage</p>
+            </footer>
         </article>
     );
 }

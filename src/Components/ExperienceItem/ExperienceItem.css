@@ -11,7 +11,7 @@
 }
 
 .experience-row-when {
-    font-family: Georgia, serif;
+    font-family: var(--font-display);
     font-weight: 400;
     font-size: 0.85rem;
     color: var(--color-text-faint);

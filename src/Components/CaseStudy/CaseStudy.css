@@ -11,6 +11,35 @@
     color: var(--color-accent);
 }
 
+.case-study-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    max-width: var(--container-width);
+    margin-inline: auto;
+    width: 90%;
+    padding-block: var(--space-5) var(--space-7);
+    border-top: 1px solid var(--color-border);
+}
+
+.case-study-footer .case-study-back {
+    margin-bottom: 0;
+}
+
+.case-study-footer-copy {
+    font-size: 0.8rem;
+    color: var(--color-text-faint);
+}
+
+@media (max-width: 480px) {
+    .case-study-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-2);
+    }
+}
+
 .case-hero {
     align-items: flex-start;
     justify-content: flex-start;
